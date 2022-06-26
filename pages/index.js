@@ -23,7 +23,7 @@ export default function Home() {
   const { data: adsBanners } = useSWR('/ads-banner.php')
   return (
     <div>
-      <Head>
+      {/* <Head>
         <link rel='icon' type='image/svg+xml' href='%PUBLIC_URL%/logo.svg' />
         <link
           rel='icon'
@@ -108,9 +108,9 @@ export default function Home() {
             ? window.dataLayer.push(arguments)
             : null}
           gtag('js', new Date()) gtag('config', 'G-XRGSDPNWJX')
-        </script> */}
-      </Head>
-      {/* <SEO /> */}
+        </script> 
+      </Head> */}
+      <SEO title='home title' description='home description' />
       <Header111 />
       <ScrollToTop />
       <main>

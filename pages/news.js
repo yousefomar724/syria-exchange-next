@@ -37,7 +37,11 @@ const NewsPage = () => {
 
   return (
     <>
-      <SEO />
+      <SEO
+        title='news title'
+        description='news description'
+        imageUrl='/about-us.jpg'
+      />
       <Header111 />
       <ScrollToTop />
       <Container className='mt-4' as='main'>

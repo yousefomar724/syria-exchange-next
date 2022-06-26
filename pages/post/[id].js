@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react'
 // import { useParams } from 'react-router-dom'
 import useSWR from 'swr'
 import { Card } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
 import Footer from '../../components/footer/Footer'
 /*import RefreshIcon from "../RefreshIcon"; */
 /* import { format } from "date-fns";
 import { ar } from "date-fns/locale"; */
+import Head from 'next/head'
 import SEO from '../../components/SEO'
 import IMGFig1 from '../../components/img-fig/IMGFig1'
 import InternationalCoins from '../../components/international-coins/InternationalCoins'
@@ -55,71 +57,99 @@ const SinglePostPage = () => {
     currentURL = window.location.href
   })
 
-  // const currentURL = window.location.href
-  console.log(post)
+  const {
+    i18n: { language },
+  } = useTranslation()
 
-  // const baseTitle = language === 'ar' ? 'سوريا للصرافة' : 'Syria Exchange'
+  // const currentURL = window.location.href
+
+  const baseTitle = language === 'ar' ? 'سوريا للصرافة' : 'Syria Exchange'
+  const DEFAULT_DESCRIPTION =
+    'سعر صرف الليرة السورية مقابل الدولار في جميع المحافظات و اسعار الذهب في سوريا سعر صرف الليرة السورية مقابل العملات  سعر صرف الليرة التركية اسعار الذهب في تركيا الليرة اليوم قيمة الليرة السورية صرف الليرة السورية سعر الدولار صرف الدولار تحويل الى سوريا'
+
   return (
     <>
       {post && (
-        <SEO
-          title={post.post_title.trim()}
-          description={`${post.post_body.substring(3, 120)}...`}
-          imageUrl={post.post_image}
-          ogType='article'
-          articleTag={post.post_category}
-        />
-        // <>
-        //   <title>{title ? `${title} | ${baseTitle}` : baseTitle}</title>
-        //   <meta
-        //     name='description'
-        //     content={description ? description : DEFAULT_DESCRIPTION}
-        //   />
+        // <SEO
+        //   title={post.post_title.trim()}
+        //   description={`${post.post_body.substring(3, 120)}...`}
+        //   imageUrl={post.post_image}
+        //   ogType='article'
+        //   articleTag={post.post_category}
+        // />
 
-        //   <meta property='og:type' content={ogType ? ogType : 'website'} />
-        //   <meta
-        //     property='og:title'
-        //     content={title ? `${title} | ${baseTitle}` : baseTitle}
-        //   />
-        //   <meta
-        //     property='og:url'
-        //     content={typeof window !== 'undefined' ? window.location.href : '/'}
-        //   />
-        //   <meta
-        //     property='og:description'
-        //     content={description ? description : DEFAULT_DESCRIPTION}
-        //   />
-        //   <meta
-        //     property='og:image'
-        //     content={
-        //       imageUrl
-        //         ? imageUrl
-        //         : `${
-        //             typeof window !== 'undefined' ? window.location.href : '/'
-        //           }syria-exchange-share.jpg`
-        //     }
-        //   />
-        //   <meata property='og:locale' content='ar_AR' />
-        //   {ogType === 'article' && articleTag && (
-        //     <meta property='article:tag' content={articleTag} />
-        //   )}
+        <Head>
+          <title>
+            {post.post_title.trim()
+              ? `${post.post_title.trim()} | ${baseTitle}`
+              : baseTitle}
+          </title>
+          <meta
+            name='description'
+            content={
+              `${post.post_body.substring(3, 120)}...`
+                ? `${post.post_body.substring(3, 120)}...`
+                : DEFAULT_DESCRIPTION
+            }
+          />
 
-        //   <meta property='twitter:card' content='summary_large_image' />
-        //   <meta
-        //     property='twitter:title'
-        //     content={title ? `${title} | ${baseTitle}` : baseTitle}
-        //   />
-        //   <meta
-        //     property='twitter:image:src'
-        //     content={
-        //       imageUrl
-        //         ? imageUrl
-        //         : `${
-        //             typeof window !== 'undefined' ? window.location.href : '/'
-        //           }syria-exchange-share.jpg`
-        //     }
-        //   />
-        // </>
+          <meta property='og:type' content='article' />
+          <meta
+            property='og:title'
+            content={
+              post.post_title.trim()
+                ? `${post.post_title.trim()} | ${baseTitle}`
+                : baseTitle
+            }
+          />
+          <meta
+            property='og:url'
+            content={typeof window !== 'undefined' ? window.location.href : '/'}
+          />
+          <meta
+            property='og:description'
+            content={
+              `${post.post_body.substring(3, 120)}...`
+                ? `${post.post_body.substring(3, 120)}...`
+                : DEFAULT_DESCRIPTION
+            }
+          />
+          <meta
+            property='og:image'
+            content={
+              post.post_image
+                ? post.post_image
+                : `${
+                    typeof window !== 'undefined' ? window.location.href : '/'
+                  }syria-exchange-share.jpg`
+            }
+          />
+          <meata property='og:locale' content='ar_AR' />
+
+          {/* {ogType === 'article' && articleTag && ( */}
+          <meta property='article:tag' content='article' />
+          {/* // )} */}
+
+          <meta property='twitter:card' content='summary_large_image' />
+          <meta
+            property='twitter:title'
+            content={
+              post.post_title.trim()
+                ? `${post.post_title.trim()} | ${baseTitle}`
+                : baseTitle
+            }
+          />
+          <meta
+            property='twitter:image:src'
+            content={
+              post.post_image
+                ? post.post_image
+                : `${
+                    typeof window !== 'undefined' ? window.location.href : '/'
+                  }syria-exchange-share.jpg`
+            }
+          />
+        </Head>
       )}
       <Header111 />
       <ScrollToTop />
