@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 // import { useParams } from 'react-router-dom'
+import { NextSeo } from 'next-seo'
 import useSWR from 'swr'
 import { Card } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
@@ -70,15 +71,62 @@ const SinglePostPage = () => {
   return (
     <>
       {post && (
-        // <SEO
-        //   title={post.post_title.trim()}
-        //   description={`${post.post_body.substring(3, 120)}...`}
-        //   imageUrl={post.post_image}
-        //   ogType='article'
-        //   articleTag={post.post_category}
-        // />
+        <NextSeo
+          title={
+            post.post_title.trim()
+              ? `${post.post_title.trim()} | ${baseTitle}`
+              : baseTitle
+          }
+          description={
+            `${post.post_body.substring(3, 120)}...`
+              ? `${post.post_body.substring(3, 120)}...`
+              : DEFAULT_DESCRIPTION
+          }
+          openGraph={{
+            url: typeof window !== 'undefined' ? window.location.href : '/',
+            title: post.post_title.trim()
+              ? `${post.post_title.trim()} | ${baseTitle}`
+              : baseTitle,
+            description: `${post.post_body.substring(3, 120)}...`
+              ? `${post.post_body.substring(3, 120)}...`
+              : DEFAULT_DESCRIPTION,
+            images: [
+              {
+                url: post.post_image
+                  ? post.post_image
+                  : `${
+                      typeof window !== 'undefined' ? window.location.href : '/'
+                    }syria-exchange-share.jpg`,
+                width: 800,
+                height: 600,
+                alt: 'Og Image Alt',
+                type: 'image/jpg',
+              },
+              {
+                url: 'https://syria-exchange.com/syria-exchange-share.jpg',
+                width: 900,
+                height: 800,
+                alt: 'Og Image Alt Second',
+                type: 'image/jpg',
+              },
+            ],
+            site_name: 'https://syria-exchange-next.vercel.app/',
+          }}
+          twitter={{
+            // handle: '@handle',
+            // site: '@site',
+            cardType: 'summary_large_image',
+          }}
+        />
+      )}
+      {/* <SEO      title={post.post_title.trim()}
+          description={`${post.post_body.substring(3, 120)}...`}
+          imageUrl={post.post_image}
+          ogType='article'
+          articleTag={post.post_category}
+        /> */}
 
-        <Head>
+      {/* <Head>
           <title>
             {post.post_title.trim()
               ? `${post.post_title.trim()} | ${baseTitle}`
@@ -126,9 +174,7 @@ const SinglePostPage = () => {
           />
           <meata property='og:locale' content='ar_AR' />
 
-          {/* {ogType === 'article' && articleTag && ( */}
           <meta property='article:tag' content='article' />
-          {/* // )} */}
 
           <meta property='twitter:card' content='summary_large_image' />
           <meta
@@ -149,8 +195,8 @@ const SinglePostPage = () => {
                   }syria-exchange-share.jpg`
             }
           />
-        </Head>
-      )}
+        </Head> */}
+
       <Header111 />
       <ScrollToTop />
       <div className='mainPage container'>
