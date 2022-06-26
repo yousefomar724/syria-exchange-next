@@ -70,55 +70,45 @@ const SinglePostPage = () => {
 
   return (
     <>
-      {post && (
-        <NextSeo
-          title={
-            post.post_title.trim()
-              ? `${post.post_title.trim()} | ${baseTitle}`
-              : baseTitle
-          }
-          description={
-            `${post.post_body.substring(3, 120)}...`
-              ? `${post.post_body.substring(3, 120)}...`
-              : DEFAULT_DESCRIPTION
-          }
-          openGraph={{
-            url: typeof window !== 'undefined' ? window.location.href : '/',
-            title: post.post_title.trim()
-              ? `${post.post_title.trim()} | ${baseTitle}`
-              : baseTitle,
-            description: `${post.post_body.substring(3, 120)}...`
-              ? `${post.post_body.substring(3, 120)}...`
-              : DEFAULT_DESCRIPTION,
-            images: [
-              {
-                url: post.post_image
-                  ? post.post_image
-                  : `${
-                      typeof window !== 'undefined' ? window.location.href : '/'
-                    }syria-exchange-share.jpg`,
-                width: 800,
-                height: 600,
-                alt: 'Og Image Alt',
-                type: 'image/jpg',
-              },
-              {
-                url: 'https://syria-exchange.com/syria-exchange-share.jpg',
-                width: 900,
-                height: 800,
-                alt: 'Og Image Alt Second',
-                type: 'image/jpg',
-              },
-            ],
-            site_name: 'https://syria-exchange-next.vercel.app/',
-          }}
-          twitter={{
-            // handle: '@handle',
-            // site: '@site',
-            cardType: 'summary_large_image',
-          }}
-        />
-      )}
+      <NextSeo
+        title={
+          post.post_title.trim()
+            ? `${post.post_title.trim()} | ${baseTitle}`
+            : baseTitle
+        }
+        description={
+          `${post.post_body.substring(3, 120)}...`
+            ? `${post.post_body.substring(3, 120)}...`
+            : DEFAULT_DESCRIPTION
+        }
+        openGraph={{
+          url: typeof window !== 'undefined' ? window.location.href : '/',
+          title: 'post title',
+          description: 'post description',
+          images: [
+            {
+              url: 'https://syria-exchange.com/panel/uploads/images/تفاصيل 122 ألف سوري “ المفقودين” في تركيا_436.jpg',
+              width: 800,
+              height: 600,
+              alt: 'Og Image Alt',
+              type: 'image/jpg',
+            },
+            // {
+            //   url: 'https://syria-exchange.com/syria-exchange-share.jpg',
+            //   width: 900,
+            //   height: 800,
+            //   alt: 'Og Image Alt Second',
+            //   type: 'image/jpg',
+            // },
+          ],
+          site_name: 'https://syria-exchange-next.vercel.app/',
+        }}
+        twitter={{
+          // handle: '@handle',
+          // site: '@site',
+          cardType: 'summary_large_image',
+        }}
+      />
       {/* <SEO      title={post.post_title.trim()}
           description={`${post.post_body.substring(3, 120)}...`}
           imageUrl={post.post_image}
