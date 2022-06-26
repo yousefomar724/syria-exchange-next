@@ -61,66 +61,66 @@ const SinglePostPage = () => {
   // const baseTitle = language === 'ar' ? 'سوريا للصرافة' : 'Syria Exchange'
   return (
     <>
-      {/* {post && (
-        // <SEO
-        //   title={post.post_title.trim()}
-        //   description={`${post.post_body.substring(3, 120)}...`}
-        //   imageUrl={post.post_image}
-        //   ogType='article'
-        //   articleTag={post.post_category}
-        // />
-        <>
-          <title>{title ? `${title} | ${baseTitle}` : baseTitle}</title>
-          <meta
-            name='description'
-            content={description ? description : DEFAULT_DESCRIPTION}
-          />
+      {post && (
+        <SEO
+          title={post.post_title.trim()}
+          description={`${post.post_body.substring(3, 120)}...`}
+          imageUrl={post.post_image}
+          ogType='article'
+          articleTag={post.post_category}
+        />
+        // <>
+        //   <title>{title ? `${title} | ${baseTitle}` : baseTitle}</title>
+        //   <meta
+        //     name='description'
+        //     content={description ? description : DEFAULT_DESCRIPTION}
+        //   />
 
-          <meta property='og:type' content={ogType ? ogType : 'website'} />
-          <meta
-            property='og:title'
-            content={title ? `${title} | ${baseTitle}` : baseTitle}
-          />
-          <meta
-            property='og:url'
-            content={typeof window !== 'undefined' ? window.location.href : '/'}
-          />
-          <meta
-            property='og:description'
-            content={description ? description : DEFAULT_DESCRIPTION}
-          />
-          <meta
-            property='og:image'
-            content={
-              imageUrl
-                ? imageUrl
-                : `${
-                    typeof window !== 'undefined' ? window.location.href : '/'
-                  }syria-exchange-share.jpg`
-            }
-          />
-          <meata property='og:locale' content='ar_AR' />
-          {ogType === 'article' && articleTag && (
-            <meta property='article:tag' content={articleTag} />
-          )}
+        //   <meta property='og:type' content={ogType ? ogType : 'website'} />
+        //   <meta
+        //     property='og:title'
+        //     content={title ? `${title} | ${baseTitle}` : baseTitle}
+        //   />
+        //   <meta
+        //     property='og:url'
+        //     content={typeof window !== 'undefined' ? window.location.href : '/'}
+        //   />
+        //   <meta
+        //     property='og:description'
+        //     content={description ? description : DEFAULT_DESCRIPTION}
+        //   />
+        //   <meta
+        //     property='og:image'
+        //     content={
+        //       imageUrl
+        //         ? imageUrl
+        //         : `${
+        //             typeof window !== 'undefined' ? window.location.href : '/'
+        //           }syria-exchange-share.jpg`
+        //     }
+        //   />
+        //   <meata property='og:locale' content='ar_AR' />
+        //   {ogType === 'article' && articleTag && (
+        //     <meta property='article:tag' content={articleTag} />
+        //   )}
 
-          <meta property='twitter:card' content='summary_large_image' />
-          <meta
-            property='twitter:title'
-            content={title ? `${title} | ${baseTitle}` : baseTitle}
-          />
-          <meta
-            property='twitter:image:src'
-            content={
-              imageUrl
-                ? imageUrl
-                : `${
-                    typeof window !== 'undefined' ? window.location.href : '/'
-                  }syria-exchange-share.jpg`
-            }
-          />
-        </>
-      )} */}
+        //   <meta property='twitter:card' content='summary_large_image' />
+        //   <meta
+        //     property='twitter:title'
+        //     content={title ? `${title} | ${baseTitle}` : baseTitle}
+        //   />
+        //   <meta
+        //     property='twitter:image:src'
+        //     content={
+        //       imageUrl
+        //         ? imageUrl
+        //         : `${
+        //             typeof window !== 'undefined' ? window.location.href : '/'
+        //           }syria-exchange-share.jpg`
+        //     }
+        //   />
+        // </>
+      )}
       <Header111 />
       <ScrollToTop />
       <div className='mainPage container'>
