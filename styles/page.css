@@ -1,0 +1,102 @@
+:root {
+  --color-primary: #fdbd11;
+}
+
+.section-branding {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  background-color: #3c3c3c;
+}
+.section-branding .heading {
+  display: flex;
+  align-items: center;
+}
+.section-branding .title {
+  padding: 0 0.5rem;
+  margin: 0;
+  color: var(--color-primary);
+  font-size: 1rem;
+}
+.section-branding .dropdown button {
+  font-size: 0.75rem;
+  padding: 1px 16px 4px;
+}
+.section-branding .date {
+  padding: 0 8px;
+  color: #9a9a9a;
+  font-size: 0.6rem;
+  white-space: pre;
+}
+/* .section-branding .title-sm {
+  font-size: 1rem;
+} */
+.section-branding a {
+  display: inline-block;
+  color: var(--color-primary);
+  text-decoration: none;
+  padding: 4px 18px;
+}
+.section-branding .logo {
+  width: auto;
+  max-height: 30px;
+  margin: 0;
+}
+
+.toastFlag, .toastFlagIterCoins {
+  max-width: 38px;
+}
+
+.nav-menu2-skeleton > ul > li {
+  position: relative;
+  white-space: nowrap;
+  float: right;
+  justify-content: space-between;
+  padding: 0 0 0 12px;
+  border-left: 0.1px rgba(255, 255, 255, 0.411) solid;
+  font-family: "AlQabas-Regular";
+}
+.nav-menu2-skeleton > ul > li span {
+  line-height: 1;
+}
+.nav-menu2-skeleton li.hidden-xs {
+  display: none;
+}
+
+
+@media screen and (min-width: 768px){
+
+}
+
+@media screen and (min-width: 992px){
+  /* .section-branding .title {
+    font-size: 1.5rem;
+  } */
+  /* .section-branding .title-sm {
+    font-size: 1rem;
+  } */
+  .section-branding .logo {
+    max-height: 36px;
+  }
+
+  .section-branding .dropdown button {
+    font-size: 1rem;
+    padding: 1px 20px 4px;
+  }
+  .section-branding .date {
+    font-size: 0.7rem;
+  }
+
+  .nav-menu2-skeleton li.hidden-xs {
+    display: list-item;
+  }
+}
+
+@media screen and (min-width: 1200px){
+  
+}
+
+@media screen and (min-width: 1400px){
+  
+}

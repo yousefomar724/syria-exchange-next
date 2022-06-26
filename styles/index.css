@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'AlQabas-Regular';
+  src: local('AlQabas-Regular'),
+    url('/fonts/AlQabas-Regular.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: '29LT-Bukra';
+  src: local('29LT-Bukra'), url('/fonts/29LT-Bukra.ttf') format('truetype');
+  font-weight: normal;
+}
+
+Segoe-UI.ttf body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

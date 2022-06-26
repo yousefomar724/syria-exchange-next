@@ -1,0 +1,85 @@
+[dir='rtl'] ol {
+  padding-left: 0;
+  padding-right: 2rem;
+}
+
+.custom-page {
+
+}
+
+.custom-page {
+
+}
+
+.custom-page h2 {
+  font-size: 1.3rem;
+}
+
+.custom-page ul {
+  list-style: none;
+}
+.custom-page ul.custom-list li {
+  padding-left: 1em;
+  text-indent: -1em;
+}
+[dir='rtl'] .custom-page ul.custom-list li {
+  padding-left: 0;
+  padding-right: 1em;
+}
+.custom-page ul.custom-list li::before {
+  content: "-";
+  padding-right: 5px;
+}
+[dir='rtl'] .custom-page ul.custom-list li::before {
+  padding-right: 0;
+  padding-left: 5px;
+}
+
+.custom-page .terms {
+  margin-bottom: 3rem;
+}
+.custom-page .terms > li {
+  margin-bottom: 2rem;
+}
+
+
+.custom-page .list-unstyled{
+  padding-left: 0;
+  padding-right: 0;
+  list-style: none;
+}
+
+.custom-page .title {
+  /* position: absolute;
+  bottom: 30%; */
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  /* left: 50%;
+  transform: translateX(-50%); */
+
+  /* color: #fff; */
+  /* background-color: rgba(0, 0, 0, 0.35); */
+  text-align: center;
+}
+
+@media screen and (min-width: 768px){
+  .custom-page h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 992px){
+  .custom-page ol.terms {
+    margin-bottom: 5rem;
+  }
+}
+
+@media screen and (min-width: 1200px){
+  
+}
+
+@media screen and (min-width: 1400px){
+  
+}
+
