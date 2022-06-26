@@ -27,32 +27,33 @@ import { Markup, renderMarkup } from 'react-render-markup'
 import Skeleton from 'react-loading-skeleton'
 import Header111 from '../../components/Header111'
 
-const SinglePostPage = () => {
-  // const { id } = useParams()
-  const router = useRouter()
-  const {
-    query: { id },
-  } = router
-
-  const { data: allPosts } = useSWR('/blog-post.php')
-  /* const [date, setDate] = useState(
-    format(new Date(), "eeee dd/MM/yyyy - hh:mm ", {
-      locale: ar,
-    })
-  ); */
-
+export const getServerSideProps = async (context) => {
+  const { id } = context.query
+  const data = await fetch(
+    'https://syria-exchange.com/panel/v1/api/blog-post.php'
+  )
+  const allPosts = await data.json()
+  // const { data: allPosts } = await useSWR('/blog-post.php')
   const post = allPosts?.blog_post.find(
     (p) => String(p.id) === String(id.split('-')[0])
   )
-
   const financialPosts = allPosts?.blog_post.filter(
     (item) => item.post_category === 'نصائح مالية'
   )
+  return {
+    props: {
+      post,
+      financialPosts,
+    },
+  }
+}
 
+const SinglePostPage = ({ post, financialPosts }) => {
   /* const refreshDate = (e) => {
     e.preventDefault();
     setDate(format(new Date(), "eeee dd/MM/yyyy - hh:mm ", { locale: ar }));
   }; */
+
   let currentURL
   useEffect(() => {
     currentURL = window.location.href
@@ -71,113 +72,37 @@ const SinglePostPage = () => {
   return (
     <>
       <NextSeo
-        title='single post'
-        description='post desc'
+        title={
+          post.post_title.trim()
+            ? `${post.post_title.trim()} | ${baseTitle}`
+            : baseTitle
+        }
+        description={`${post.post_body.substring(3, 120)}...`}
         openGraph={{
           url: typeof window !== 'undefined' ? window.location.href : '/',
-          title: 'post title',
-          description: 'post description',
+          title: post.post_title.trim()
+            ? `${post.post_title.trim()} | ${baseTitle}`
+            : baseTitle,
+          description: `${post.post_body.substring(3, 120)}...`,
           images: [
             {
-              url: 'https://syria-exchange.com/panel/uploads/images/تفاصيل 122 ألف سوري “ المفقودين” في تركيا_436.jpg',
+              url: post.post_image
+                ? post.post_image
+                : `${
+                    typeof window !== 'undefined' ? window.location.href : '/'
+                  }syria-exchange-share.jpg`,
               width: 800,
               height: 600,
               alt: 'Og Image Alt',
               type: 'image/jpg',
             },
-            // {
-            //   url: 'https://syria-exchange.com/syria-exchange-share.jpg',
-            //   width: 900,
-            //   height: 800,
-            //   alt: 'Og Image Alt Second',
-            //   type: 'image/jpg',
-            // },
           ],
           site_name: 'https://syria-exchange-next.vercel.app/',
         }}
         twitter={{
-          // handle: '@handle',
-          // site: '@site',
           cardType: 'summary_large_image',
         }}
       />
-      {/* <SEO      title={post.post_title.trim()}
-          description={`${post.post_body.substring(3, 120)}...`}
-          imageUrl={post.post_image}
-          ogType='article'
-          articleTag={post.post_category}
-        /> */}
-
-      {/* <Head>
-          <title>
-            {post.post_title.trim()
-              ? `${post.post_title.trim()} | ${baseTitle}`
-              : baseTitle}
-          </title>
-          <meta
-            name='description'
-            content={
-              `${post.post_body.substring(3, 120)}...`
-                ? `${post.post_body.substring(3, 120)}...`
-                : DEFAULT_DESCRIPTION
-            }
-          />
-
-          <meta property='og:type' content='article' />
-          <meta
-            property='og:title'
-            content={
-              post.post_title.trim()
-                ? `${post.post_title.trim()} | ${baseTitle}`
-                : baseTitle
-            }
-          />
-          <meta
-            property='og:url'
-            content={typeof window !== 'undefined' ? window.location.href : '/'}
-          />
-          <meta
-            property='og:description'
-            content={
-              `${post.post_body.substring(3, 120)}...`
-                ? `${post.post_body.substring(3, 120)}...`
-                : DEFAULT_DESCRIPTION
-            }
-          />
-          <meta
-            property='og:image'
-            content={
-              post.post_image
-                ? post.post_image
-                : `${
-                    typeof window !== 'undefined' ? window.location.href : '/'
-                  }syria-exchange-share.jpg`
-            }
-          />
-          <meata property='og:locale' content='ar_AR' />
-
-          <meta property='article:tag' content='article' />
-
-          <meta property='twitter:card' content='summary_large_image' />
-          <meta
-            property='twitter:title'
-            content={
-              post.post_title.trim()
-                ? `${post.post_title.trim()} | ${baseTitle}`
-                : baseTitle
-            }
-          />
-          <meta
-            property='twitter:image:src'
-            content={
-              post.post_image
-                ? post.post_image
-                : `${
-                    typeof window !== 'undefined' ? window.location.href : '/'
-                  }syria-exchange-share.jpg`
-            }
-          />
-        </Head> */}
 
       <Header111 />
       <ScrollToTop />
