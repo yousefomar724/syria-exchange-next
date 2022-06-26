@@ -71,16 +71,8 @@ const SinglePostPage = () => {
   return (
     <>
       <NextSeo
-        title={
-          post.post_title.trim()
-            ? `${post.post_title.trim()} | ${baseTitle}`
-            : baseTitle
-        }
-        description={
-          `${post.post_body.substring(3, 120)}...`
-            ? `${post.post_body.substring(3, 120)}...`
-            : DEFAULT_DESCRIPTION
-        }
+        title='single post'
+        description='post desc'
         openGraph={{
           url: typeof window !== 'undefined' ? window.location.href : '/',
           title: 'post title',
