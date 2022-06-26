@@ -54,10 +54,10 @@ const SinglePostPage = ({ post, financialPosts }) => {
     setDate(format(new Date(), "eeee dd/MM/yyyy - hh:mm ", { locale: ar }));
   }; */
 
-  let currentURL
-  useEffect(() => {
-    currentURL = window.location.href
-  })
+  // let currentURL
+  // useEffect(() => {
+  //   currentURL = window.location.href
+  // })
 
   const {
     i18n: { language },
@@ -168,7 +168,7 @@ const SinglePostPage = ({ post, financialPosts }) => {
 
                 <div className='sharePostIconsDiv'>
                   <FacebookMessengerShareButton
-                    url={currentURL}
+                    url={typeof window !== undefined && window.location.href}
                     className='sharePostliIcon'
                   >
                     <img
@@ -180,7 +180,7 @@ const SinglePostPage = ({ post, financialPosts }) => {
 
                   <TelegramShareButton
                     title={post?.post_title.trim()}
-                    url={currentURL}
+                    url={typeof window !== undefined && window.location.href}
                     className='sharePostliIcon'
                   >
                     <img
@@ -192,7 +192,7 @@ const SinglePostPage = ({ post, financialPosts }) => {
 
                   <WhatsappShareButton
                     title={post?.post_title.trim()}
-                    url={currentURL}
+                    url={typeof window !== undefined && window.location.href}
                     className='sharePostliIcon'
                   >
                     <img
@@ -204,7 +204,7 @@ const SinglePostPage = ({ post, financialPosts }) => {
 
                   <TwitterShareButton
                     title={post?.post_title.trim()}
-                    url={currentURL}
+                    url={typeof window !== undefined && window.location.href}
                     className='sharePostliIcon'
                   >
                     <img
@@ -215,7 +215,7 @@ const SinglePostPage = ({ post, financialPosts }) => {
                   </TwitterShareButton>
 
                   <FacebookShareButton
-                    url={currentURL}
+                    url={typeof window !== undefined && window.location.href}
                     quote={post?.post_title.trim()}
                     className='sharePostliIcon'
                   >
