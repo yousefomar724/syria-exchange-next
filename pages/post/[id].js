@@ -1,15 +1,7 @@
-import { useEffect, useState } from 'react'
-// import { useParams } from 'react-router-dom'
 import { NextSeo } from 'next-seo'
-import useSWR from 'swr'
 import { Card } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import Footer from '../../components/footer/Footer'
-/*import RefreshIcon from "../RefreshIcon"; */
-/* import { format } from "date-fns";
-import { ar } from "date-fns/locale"; */
-import Head from 'next/head'
-import SEO from '../../components/SEO'
 import IMGFig1 from '../../components/img-fig/IMGFig1'
 import InternationalCoins from '../../components/international-coins/InternationalCoins'
 import MostWatched from '../../components/most-watched/MostWatched'
@@ -22,18 +14,16 @@ import {
   WhatsappShareButton,
   TwitterShareButton,
 } from 'react-share'
-/* import sysUpdate from "../../assets/system-update.png"; */
 import { Markup, renderMarkup } from 'react-render-markup'
 import Skeleton from 'react-loading-skeleton'
 import Header111 from '../../components/Header111'
 
-export const getServerSideProps = async (context) => {
-  const { id } = context.query
+export const getStaticProps = async (context) => {
+  const { id } = context.params
   const data = await fetch(
     'https://syria-exchange.com/panel/v1/api/blog-post.php'
   )
   const allPosts = await data.json()
-  // const { data: allPosts } = await useSWR('/blog-post.php')
   const post = allPosts?.blog_post.find(
     (p) => String(p.id) === String(id.split('-')[0])
   )
@@ -48,26 +38,28 @@ export const getServerSideProps = async (context) => {
   }
 }
 
+export const getStaticPaths = async () => {
+  const data = await fetch(
+    'https://syria-exchange.com/panel/v1/api/blog-post.php'
+  )
+  const allPosts = await data.json()
+
+  const paths = allPosts?.blog_post.map((post) => ({
+    params: { id: `${post.id}-${post.post_title.split(' ').join('-')}` },
+  }))
+
+  return { paths, fallback: false }
+}
+
 const SinglePostPage = ({ post, financialPosts }) => {
-  /* const refreshDate = (e) => {
-    e.preventDefault();
-    setDate(format(new Date(), "eeee dd/MM/yyyy - hh:mm ", { locale: ar }));
-  }; */
-
-  // let currentURL
-  // useEffect(() => {
-  //   currentURL = window.location.href
-  // })
-
+  const router = useRouter()
   const {
     i18n: { language },
   } = useTranslation()
 
-  // const currentURL = window.location.href
+  const currentURL = `https://syria-exchange-next.vercel.app${router.asPath}`
 
   const baseTitle = language === 'ar' ? 'سوريا للصرافة' : 'Syria Exchange'
-  const DEFAULT_DESCRIPTION =
-    'سعر صرف الليرة السورية مقابل الدولار في جميع المحافظات و اسعار الذهب في سوريا سعر صرف الليرة السورية مقابل العملات  سعر صرف الليرة التركية اسعار الذهب في تركيا الليرة اليوم قيمة الليرة السورية صرف الليرة السورية سعر الدولار صرف الدولار تحويل الى سوريا'
 
   return (
     <>
@@ -115,23 +107,6 @@ const SinglePostPage = ({ post, financialPosts }) => {
                   <img src='/logo.svg' alt='Syria Exchange' className='img' />
                   {post?.post_category}
                 </li>
-                {/* <li className="font-number date">
-                {date}
-                <Button className="btn-refresh" onClick={refreshDate}>
-                  <RefreshIcon
-                    anchotText=""
-                    icon={
-                      <img
-                        src={sysUpdate}
-                        alt="sysUpdateIcon"
-                        className="refresh"
-                      />
-                    }
-                    iconStatus={true}
-                    liClass="refresh"
-                  />
-                </Button>
-              </li> */}
               </ul>
             </nav>
             <div className='newsItemsCardsGrid'>
@@ -168,7 +143,7 @@ const SinglePostPage = ({ post, financialPosts }) => {
 
                 <div className='sharePostIconsDiv'>
                   <FacebookMessengerShareButton
-                    url={typeof window !== undefined && window.location.href}
+                    url={currentURL}
                     className='sharePostliIcon'
                   >
                     <img
@@ -180,7 +155,7 @@ const SinglePostPage = ({ post, financialPosts }) => {
 
                   <TelegramShareButton
                     title={post?.post_title.trim()}
-                    url={typeof window !== undefined && window.location.href}
+                    url={currentURL}
                     className='sharePostliIcon'
                   >
                     <img
@@ -192,7 +167,7 @@ const SinglePostPage = ({ post, financialPosts }) => {
 
                   <WhatsappShareButton
                     title={post?.post_title.trim()}
-                    url={typeof window !== undefined && window.location.href}
+                    url={currentURL}
                     className='sharePostliIcon'
                   >
                     <img
@@ -204,7 +179,7 @@ const SinglePostPage = ({ post, financialPosts }) => {
 
                   <TwitterShareButton
                     title={post?.post_title.trim()}
-                    url={typeof window !== undefined && window.location.href}
+                    url={currentURL}
                     className='sharePostliIcon'
                   >
                     <img
@@ -215,7 +190,7 @@ const SinglePostPage = ({ post, financialPosts }) => {
                   </TwitterShareButton>
 
                   <FacebookShareButton
-                    url={typeof window !== undefined && window.location.href}
+                    url={currentURL}
                     quote={post?.post_title.trim()}
                     className='sharePostliIcon'
                   >
