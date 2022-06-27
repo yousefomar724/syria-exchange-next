@@ -1,35 +1,13 @@
-import { Button } from 'react-bootstrap'
 import { useEffect, useState } from 'react'
-/* import { format } from "date-fns";
-import { ar, enUS } from "date-fns/locale"; */
 import Toast from 'react-bootstrap/Toast'
 import { RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri'
-/* import RefreshIcon from "../RefreshIcon"; */
 import { useTranslation } from 'react-i18next'
-/* import sysUpdate from "../../assets/system-update.png"; */
 import CurrencyRowSkeleton from '../skeletons/CurrencyRowSkeleton'
 import formatDate from '../../lib/formatDate'
-import logo from '../gold-prices/gold.png'
-import turkingFlagImg from '../currIcons/TRY.png'
 import Skeleton from 'react-loading-skeleton'
 
 const TurkishGoldPrices = ({ title, color, border }) => {
   const { t, i18n } = useTranslation()
-
-  /* const [date, setDate] = useState(
-    format(new Date(), "eeee dd/MM/yyyy - hh:mm ", {
-      locale: i18n.dir() === "ltr" ? enUS : ar,
-    })
-  );
-
-  const refreshDate = (e) => {
-    e.preventDefault();
-    setDate(
-      format(new Date(), "eeee dd/MM/yyyy - hh:mm ", {
-        locale: i18n.dir() === "ltr" ? enUS : ar,
-      })
-    );
-  }; */
 
   const [tryGold, setTryGold] = useState()
   useEffect(() => {
@@ -43,10 +21,6 @@ const TurkishGoldPrices = ({ title, color, border }) => {
     }
     getTryGold()
   }, [])
-
-  // if (tryGold === undefined) {
-  //   return null;
-  // }
 
   const gold = tryGold?.gold_prices.map((item) => {
     let Try = []
@@ -66,7 +40,7 @@ const TurkishGoldPrices = ({ title, color, border }) => {
       <div className='section-branding flex-wrap'>
         <div className='heading'>
           <img
-            src={turkingFlagImg}
+            src='/currIcons/TRY.png'
             alt='Syria Exchange'
             className='logo'
             style={{ maxWidth: '32px' }}
@@ -84,24 +58,6 @@ const TurkishGoldPrices = ({ title, color, border }) => {
           )}
         </time>
       </div>
-
-      {/* <li style={{ color: color }} className="font-number date">
-            {date}
-            <Button className="btn-refresh" onClick={refreshDate}>
-              <RefreshIcon
-                anchotText=""
-                icon={
-                  <img
-                    src={sysUpdate}
-                    alt="sys-udpateIcon"
-                    className="refresh"
-                  />
-                }
-                iconStatus={true}
-                liClass="refresh"
-              />
-            </Button>
-          </li> */}
 
       <div className='goldPricesToast'>
         <div className='cerToastFirstRow' style={{ backgroundColor: border }}>
@@ -121,7 +77,7 @@ const TurkishGoldPrices = ({ title, color, border }) => {
               <Toast className={`grid-col-span-4 ${toastEnClass}`} key={index}>
                 <Toast.Body className='toastBody'>
                   <div className=' toastFirstFragment grid-col-span-2'>
-                    <img src={logo} alt='Syria Exchange' className='img' />
+                    <img src='/gold.png' alt='Syria Exchange' className='img' />
                     <div>
                       <p>
                         {i18n.dir() === 'rtl'

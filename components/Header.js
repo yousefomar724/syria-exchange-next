@@ -1,16 +1,12 @@
 import ListItem from './ListItem'
 import ListItem2 from './ListItem2'
 import { RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri'
-import sysUpdate from '../assets/system-update.png'
-import logo from './logo.svg'
 import Paragraph from './Paragraph'
 import HeaderRefreshIcon from './HeaderRefreshIcon'
 import { Dropdown, Button } from 'react-bootstrap'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import ListItemSocial from './ListItemSocial'
-import googleApp from './footer/google-play-badge.png'
-import AppleApp from './footer/apple-store-badge.png'
 import { useTranslation } from 'react-i18next'
 
 const lngs = {
@@ -114,7 +110,7 @@ const Header = () => {
       <div className='container d-flex header'>
         <div className='logo mr-auto'>
           <a href='index.html'>
-            <img src={logo} alt='Syria Exchange' className='img' />
+            <img src='/logo.svg' alt='Syria Exchange' className='img' />
           </a>
           <div className='mt-2'>
             <Paragraph pText='سوريا للصرافة' />
@@ -141,22 +137,10 @@ const Header = () => {
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   {curr1.map((item, index) => (
-                    <Link
-                      href={`/international-coin/${index}`}
-                      // state: {
-                      //   item: curr1[index],
-                      //   arName:
-                      //     curr1[index][0] == iter_curr_array[index][1]
-                      //       ? i18n.dir() === "ltr"
-                      //         ? iter_curr_array[index][2]
-                      //         : iter_curr_array[index][3]
-                      //       : "",
-                      // },
-                      key={index}
-                    >
+                    <Link href={`/international-coin/${index}`} key={index}>
                       <Dropdown.Item href='/' className={`${textAlign}`}>
                         <img
-                          src={require(`./currIcons/${curr1[index][0]}.png`)}
+                          src={`/currIcons/${curr1[index][0]}.png`}
                           className={`p-l-05 headerCurrIcon ${textAlign}`}
                         />
                         <span>
@@ -180,10 +164,16 @@ const Header = () => {
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                   <Dropdown.Item href='https://play.google.com/store/apps/details?id=com.currencyapplication.currencyapplication&hl=ar&gl=US'>
-                    <img src={googleApp} className='headerAppIcon' />
+                    <img
+                      src='/google-play-badge.png'
+                      className='headerAppIcon'
+                    />
                   </Dropdown.Item>
                   <Dropdown.Item href='https://play.google.com/store/apps/details?id=com.currencyapplication.currencyapplication&hl=ar&gl=US'>
-                    <img src={AppleApp} className='headerAppIcon' />
+                    <img
+                      src='/apple-store-badge.png'
+                      className='headerAppIcon'
+                    />
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
@@ -194,7 +184,7 @@ const Header = () => {
             <ListItemSocial
               icon={
                 <img
-                  src={require('../assets/social-icons/messenger.png')}
+                  src='/social-icons/messenger.png'
                   style={{ width: '50%' }}
                 />
               }
@@ -205,7 +195,7 @@ const Header = () => {
             <ListItemSocial
               icon={
                 <img
-                  src={require('../assets/social-icons/telegram.png')}
+                  src='/social-icons/telegram.png'
                   style={{ width: '50%' }}
                 />
               }
@@ -216,7 +206,7 @@ const Header = () => {
             <ListItemSocial
               icon={
                 <img
-                  src={require('../assets/social-icons/facebook.png')}
+                  src='/social-icons/facebook.png'
                   style={{ width: '50%' }}
                 />
               }
@@ -227,7 +217,7 @@ const Header = () => {
             <ListItemSocial
               icon={
                 <img
-                  src={require('../assets/social-icons/instagram.png')}
+                  src='/social-icons/instagram.png'
                   style={{ width: '50%' }}
                 />
               }
@@ -247,8 +237,6 @@ const Header = () => {
                 {lngs[lng].nativeName}
               </button>
             ))}
-            {/* <ListItem anchotText="EN" liClass="liLanguage" />
-          <ListItem anchotText="AR" liClass="liLanguage liLanguage-active" /> */}
           </ul>
         </nav>
       </div>
@@ -259,7 +247,7 @@ const Header = () => {
             <Button className='btn-refresh' onClick={refreshPage}>
               <HeaderRefreshIcon
                 anchotText={t('description.headerReload')}
-                icon={<img src={sysUpdate} className='refresh' />}
+                icon={<img src='/system-update.png' className='refresh' />}
                 iconStatus={true}
               />
             </Button>

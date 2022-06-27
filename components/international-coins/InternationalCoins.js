@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'react'
 import useSWR from 'swr'
-import { format } from 'date-fns'
-import { ar, enUS } from 'date-fns/locale'
 import Skeleton from 'react-loading-skeleton'
 import Toast from 'react-bootstrap/Toast'
 import { useTranslation } from 'react-i18next'
@@ -13,16 +10,6 @@ const InternationalCoins = ({ sectionClass, border, color }) => {
   const { t, i18n } = useTranslation()
 
   const { data } = useSWR('/international-coins.php')
-
-  // const [date, setDate] = useState(
-  //   format(new Date(), "eeee dd/MM/yyyy - hh:mm ", {
-  //     locale: i18n.dir() === "ltr" ? enUS : ar,
-  //   })
-  // );
-
-  // if (!coins) {
-  //   return null;
-  // }
 
   const curr = data?.inter_coins.map((item) => {
     for (let [key, value] of Object.entries(item)) {
@@ -64,9 +51,6 @@ const InternationalCoins = ({ sectionClass, border, color }) => {
           </h2>
         </div>
       </div>
-      {/* <div className="InternationalCoinsNav" style={{ color: color }}>
-        {t("description.internationalCoinsTitle")}
-      </div> */}
       <div className='InternationalCoinsToastDiv'>
         <div
           className='InternationalCoinsToastFirstRow font-number'

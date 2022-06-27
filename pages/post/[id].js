@@ -45,7 +45,7 @@ export const getStaticPaths = async () => {
   const allPosts = await data.json()
 
   const paths = allPosts?.blog_post.map((post) => ({
-    params: { id: `${post.id}-${post.post_title.split(' ').join('-')}` },
+    params: { id: `${post.id}-${post.post_title.trim().split(' ').join('-')}` },
   }))
 
   return { paths, fallback: false }
@@ -76,6 +76,7 @@ const SinglePostPage = ({ post, financialPosts }) => {
             ? `${post.post_title.trim()} | ${baseTitle}`
             : baseTitle,
           description: `${post.post_body.substring(3, 120)}...`,
+          type: 'article',
           images: [
             {
               url: post.post_image
@@ -90,6 +91,9 @@ const SinglePostPage = ({ post, financialPosts }) => {
             },
           ],
           site_name: 'https://syria-exchange-next.vercel.app/',
+        }}
+        facebook={{
+          appId: '361354522788209',
         }}
         twitter={{
           cardType: 'summary_large_image',
@@ -127,7 +131,6 @@ const SinglePostPage = ({ post, financialPosts }) => {
                 )}
                 <Card.Body>
                   <Card.Text as='div'>
-                    {/*  <div dangerouslySetInnerHTML={{ __html: post.body }}></div> */}
                     <div>
                       {post ? (
                         renderMarkup(post.post_body)

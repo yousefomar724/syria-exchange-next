@@ -1,34 +1,13 @@
 import Toast from 'react-bootstrap/Toast'
-import { Button } from 'react-bootstrap'
 import { useEffect, useState } from 'react'
-/* import { format } from "date-fns";
-import { ar, enUS } from "date-fns/locale"; */
 import { RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri'
-/* import RefreshIcon from "../RefreshIcon"; */
-import logo from './gold.png'
 import { useTranslation } from 'react-i18next'
-/* import sysUpdate from "../../assets/system-update.png"; */
 import Skeleton from 'react-loading-skeleton'
-
 import CurrencyRowSkeleton from '../skeletons/CurrencyRowSkeleton'
 import formatDate from '../../lib/formatDate'
 
 const SyGoldPrices = () => {
   const { t, i18n } = useTranslation()
-  /* const [date, setDate] = useState(
-    format(new Date(), "eeee dd/MM/yyyy - hh:mm ", {
-      locale: i18n.dir() === "ltr" ? enUS : ar,
-    })
-  );
-
-  const refreshDate = (e) => {
-    e.preventDefault();
-    setDate(
-      format(new Date(), "eeee dd/MM/yyyy - hh:mm ", {
-        locale: i18n.dir() === "ltr" ? enUS : ar,
-      })
-    );
-  }; */
 
   const [syGold, setSyGold] = useState()
   useEffect(() => {
@@ -42,10 +21,6 @@ const SyGoldPrices = () => {
     }
     getSyGold()
   }, [])
-
-  // if (syGold === undefined) {
-  //   return null;
-  // }
 
   const gold = syGold?.gold_prices.map((item) => {
     let SYP = []
@@ -65,7 +40,7 @@ const SyGoldPrices = () => {
     <section className='cer'>
       <div className='section-branding'>
         <div className='heading'>
-          <img src={logo} alt='Syria Exchange' className='logo' />
+          <img src='/gold.png' alt='Syria Exchange' className='logo' />
           <h2 className='title'>{t('description.GoldPricesTitle')}</h2>
         </div>
 
@@ -96,7 +71,7 @@ const SyGoldPrices = () => {
               <Toast className={`grid-col-span-4 ${toastEnClass}`} key={index}>
                 <Toast.Body className='toastBody SyGoldToastBody'>
                   <div className=' toastFirstFragment grid-col-span-2 SyGoldToastFirstFragment'>
-                    <img src={logo} alt='Syria Exchange' className='img' />
+                    <img src='/gold.png' alt='Syria Exchange' className='img' />
                     <div>
                       <p>
                         {i18n.dir() === 'rtl'

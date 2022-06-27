@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
-
 import IMGFig1 from '../components/img-fig/IMGFig1'
 import IMGFig3 from '../components/img-fig/IMGFig3'
 import InternationalCoins from '../components/international-coins/InternationalCoins'
@@ -8,10 +7,10 @@ import MostWatched from '../components/most-watched/MostWatched'
 import TurkishCER from '../components/turkish-currency-exchange-rate/TurkishCER'
 import TurkishGoldPrices from '../components/turkish-gold-prices/TurkishGoldPrices'
 import { useTranslation } from 'react-i18next'
-import SEO from '../components/SEO'
 import Header111 from '../components/Header111'
 import ScrollToTop from '../components/ScrollToTop'
 import Footer from '../components/footer/Footer'
+import Head from 'next/head'
 
 const TurkishPoundPage = () => {
   const { t } = useTranslation()
@@ -30,17 +29,15 @@ const TurkishPoundPage = () => {
     getPosts()
   }, [])
 
-  // if (posts === undefined) {
-  //   return null;
-  // }
-
   const tryPosts = posts?.blog_post
     .filter((item) => item.post_category === 'أخبار تركيا')
     .slice(0, 4)
 
   return (
     <>
-      <SEO />
+      <Head>
+        <title>سوريا للصرافة | {t('description.headerTRY')}</title>
+      </Head>
       <Header111 />
       <ScrollToTop />
       <Container className='mt-4' as='main'>

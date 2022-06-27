@@ -1,5 +1,4 @@
 import Toast from 'react-bootstrap/Toast'
-
 import { useTranslation } from 'react-i18next'
 import useSWR from 'swr'
 import { Dropdown, DropdownButton } from 'react-bootstrap'
@@ -65,8 +64,6 @@ const CurrencyConverter = ({ sectionClass }) => {
     currName: i18n.dir() === 'ltr' ? 'USA Dollad' : 'دولار امريكي',
   })
 
-  /* const [currBuy, setCurrBuy] = useState(""); */
-
   const [valueToTransfer, setValueToTransfer, valueToTransferRef] = useState('')
 
   const [result, setResult, resultRef] = useState('')
@@ -75,11 +72,9 @@ const CurrencyConverter = ({ sectionClass }) => {
     for (let [key, value] of Object.entries(item)) {
       return [key, value]
     }
-    /* return curr1; */
   })
 
   const handleChange = (event) => {
-    /* setCurrBuy(""); */
     setConvertFrom({
       currAbbreviation: event.slice(0, 3),
       currName: event.slice(4),
@@ -100,7 +95,6 @@ const CurrencyConverter = ({ sectionClass }) => {
   }
 
   const handleChangeTo = (event) => {
-    /* setCurrBuy(""); */
     setConvertTo({
       currAbbreviation: event.slice(0, 3),
       currName: event.slice(4),
@@ -129,7 +123,6 @@ const CurrencyConverter = ({ sectionClass }) => {
             item[1].map((currBuy) => {
               if (currBuy.curr_abbreviation === convertTo.currAbbreviation) {
                 vv = currBuy.curr_sell
-                /* setCurrBuy(currBuy.curr_buy); */
               }
             })
           }
@@ -146,10 +139,6 @@ const CurrencyConverter = ({ sectionClass }) => {
     return num1 * num2
   }
 
-  /* let resulMultiply = multiply(valueToTransfer, num2);
-    setResult(resulMultiply); */
-
-  /* list of options */
   const options = [
     {
       currName: i18n.dir() === 'ltr' ? 'Syrian Pound' : 'ليرة سورية',
@@ -184,7 +173,6 @@ const CurrencyConverter = ({ sectionClass }) => {
               convertToRef.current.currAbbreviation
             ) {
               vv = currBuy.curr_sell
-              /* setCurrBuy(currBuy.curr_buy); */
             }
           })
         }
@@ -235,7 +223,6 @@ const CurrencyConverter = ({ sectionClass }) => {
                 id='dropdown-menu-align-right'
                 onSelect={handleChange}
                 disabled={!coins}
-                /*  className="converterDropdown" */
               >
                 {options.map((option, index) => (
                   <Dropdown.Item

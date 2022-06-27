@@ -1,22 +1,23 @@
-import backgroundImage from '../assets/about-us.jpg'
 import { useTranslation } from 'react-i18next'
 import ListItemSocial from '../components/ListItemSocial'
-import SEO from '../components/SEO'
 import Header111 from '../components/Header111'
 import ScrollToTop from '../components/ScrollToTop'
 import Footer from '../components/footer/Footer'
+import Head from 'next/head'
 
 const AboutUsPage = () => {
   const { t } = useTranslation()
 
   return (
     <>
-      <SEO />
+      <Head>
+        <title>سوريا للصرافة | {t('description.AboutUs')}</title>
+      </Head>
       <Header111 />
       <ScrollToTop />
       <div className='mainPage'>
         <div className='grid-col-span-12 backgroundImage'>
-          <img src={backgroundImage} alt='' />
+          <img src='/about-us.jpg' alt='' />
         </div>
 
         <div className='grid-col-span-12 grid-row-start-2 container mt-5'>
@@ -50,7 +51,7 @@ const AboutUsPage = () => {
                 <ListItemSocial
                   icon={
                     <img
-                      src={require('../assets/social-icons/messenger.png')}
+                      src='/social-icons/messenger.png'
                       style={{ width: '90%' }}
                       alt='messenger'
                     />
@@ -62,7 +63,7 @@ const AboutUsPage = () => {
                 <ListItemSocial
                   icon={
                     <img
-                      src={require('../assets/social-icons/telegram.png')}
+                      src='/social-icons/telegram.png'
                       style={{ width: '90%' }}
                       alt='telegram'
                     />
@@ -74,7 +75,7 @@ const AboutUsPage = () => {
                 <ListItemSocial
                   icon={
                     <img
-                      src={require('../assets/social-icons/facebook.png')}
+                      src='/social-icons/facebook.png'
                       style={{ width: '90%' }}
                       alt='facebook'
                     />
@@ -86,7 +87,7 @@ const AboutUsPage = () => {
                 <ListItemSocial
                   icon={
                     <img
-                      src={require('../assets/social-icons/instagram.png')}
+                      src='/social-icons/instagram.png'
                       style={{ width: '90%' }}
                       alt='instagram'
                     />

@@ -1,18 +1,15 @@
-import React from 'react'
-import useSWR from 'swr'
 import { useRouter } from 'next/router'
+import { NextSeo } from 'next-seo'
 import { useTranslation } from 'react-i18next'
 import { Container, Row, Col } from 'react-bootstrap'
 import CurrencyConverter from '../../components/currency-converter/CurrencyConverter'
 import IMGFig1 from '../../components/img-fig/IMGFig1'
 import IMGFig2 from '../../components/img-fig/IMGFig2'
-/* import MostWatched from "./most-watched/MostWatched"; */
 import InterCoinCER from '../../components/turkish-currency-exchange-rate/InterCoinCER'
 import InterGoldPrices from '../../components/turkish-gold-prices/InterGoldPrices'
 import Footer from '../../components/footer/Footer'
 import Header111 from '../../components/Header111'
 import ScrollToTop from '../../components/ScrollToTop'
-import SEO from '../../components/SEO'
 
 const CURRENCY_ABBRE_TO_NAME = {
   USD: ['USA Dollar', 'دولار امريكي'],
@@ -59,19 +56,12 @@ const CURRENCY_ABBRE_TO_NAME = {
   ZAR: ['zuid-afrikaanse rand', 'راند أفريقي'],
 }
 
-const InternationalCoinPage = () => {
-  const { i18n } = useTranslation()
-
-  const {
-    query: { id },
-  } = useRouter()
-
-  const { data: internationalCoinsData } = useSWR('/international-coins.php')
-  // const location = useLocation();
-  // const coin = location.state;
-
-  const title = CURRENCY_ABBRE_TO_NAME[id]?.[i18n.dir() === 'rtl' ? 1 : 0]
-
+export const getStaticProps = async (context) => {
+  const { id } = context.params
+  const data = await fetch(
+    'https://syria-exchange.com/panel/v1/api/international-coins.php'
+  )
+  const internationalCoinsData = await data.json()
   const coins = internationalCoinsData?.inter_coins
     ?.filter((item) => {
       for (let [key, value] of Object.entries(item)) {
@@ -85,11 +75,39 @@ const InternationalCoinPage = () => {
       }
     })?.[0]
 
-  // if (!title || !coins) return null;
+  return {
+    props: {
+      coins,
+      internationalCoinsData,
+    },
+  }
+}
+
+export const getStaticPaths = async () => {
+  const data = await fetch(
+    'https://syria-exchange.com/panel/v1/api/international-coins.php'
+  )
+  const internationalCoinsData = await data.json()
+
+  const paths = internationalCoinsData?.inter_coins.map((coin) => ({
+    params: { id: `${Object.entries(coin)[0][0]}` },
+  }))
+
+  return { paths, fallback: false }
+}
+
+const InternationalCoinPage = ({ coins, internationalCoinsData }) => {
+  const { i18n } = useTranslation()
+
+  const {
+    query: { id },
+  } = useRouter()
+
+  const title = CURRENCY_ABBRE_TO_NAME[id]?.[i18n.dir() === 'rtl' ? 1 : 0]
 
   return (
     <>
-      <SEO />
+      <NextSeo title={title} />
       <Header111 />
       <ScrollToTop />
       <Container className='mt-4' as='main'>
@@ -104,10 +122,8 @@ const InternationalCoinPage = () => {
             <InterGoldPrices title={title} abbriviation={id} />
             <IMGFig2 sectionClass='IMGFig2Toast ' />
           </Col>
-
           <Col lg={6} xl={4}>
             <IMGFig1 sectionClass='m-t-15 figureIMG' />
-            {/* <MostWatched title="اخر الأخبار" color="#f7991e" sectionClass="mt-5" /> */}
           </Col>
         </Row>
       </Container>

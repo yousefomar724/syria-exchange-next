@@ -1,22 +1,22 @@
 import { useTranslation } from 'react-i18next'
-
-import backgroundImage from '../assets/user-agreement.jpg'
-import SEO from '../components/SEO'
 import Header111 from '../components/Header111'
 import ScrollToTop from '../components/ScrollToTop'
 import Footer from '../components/footer/Footer'
+import Head from 'next/head'
 
 const UserAgreementPage = () => {
   const { t } = useTranslation()
 
   return (
     <>
-      <SEO />
+      <Head>
+        <title>سوريا للصرافة | {t('description.UserAgreement.title')}</title>
+      </Head>
       <Header111 />
       <ScrollToTop />
       <div className='mainPage custom-page'>
         <div className='grid-col-span-12 position-relative backgroundImage'>
-          <img src={backgroundImage} alt='' />
+          <img src='/user-agreement.jpg' alt='' />
           <h1 className='title'>{t('description.UserAgreement.title')}</h1>
         </div>
 

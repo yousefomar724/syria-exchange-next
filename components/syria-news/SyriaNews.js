@@ -1,7 +1,6 @@
 import Toast from 'react-bootstrap/Toast'
 import Figure from 'react-bootstrap/Figure'
 import { BsChevronDoubleLeft } from 'react-icons/bs'
-import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
@@ -29,16 +28,13 @@ const SyriaNews = ({ posts }) => {
           </Link>
         </div>
       </div>
-
       <div className='syriaNewsToast' style={{ rowGap: '0' }}>
         <Figure className='grid-col-span-5 mT-3 '>
-          {/* state: {
-                title: posts.blog_post[0].post_title,
-                body: posts.blog_post[0].post_body,
-                image: posts.blog_post[0].post_image,
-                category: posts.blog_post[0].post_category,
-              }, */}
-          <Link href={`/post/${posts.blog_post[0].id}`}>
+          <Link
+            href={`/post/${
+              posts.blog_post[0].id
+            }-${posts.blog_post[0].post_title.trim().split(' ').join('-')}`}
+          >
             <a>
               <h3
                 className='figCaptionHome'
@@ -63,13 +59,11 @@ const SyriaNews = ({ posts }) => {
         <div className='newsToasts mt-md-5'>
           {posts.blog_post.slice(1, 5).map((item) => (
             <Toast className='grid-col-span-3' key={item.id}>
-              {/* state: {
-                    title: item.post_title,
-                    body: item.post_body,
-                    image: item.post_image,
-                    category: item.post_category,
-                  }, */}
-              <Link href={`/post/${item.id}`}>
+              <Link
+                href={`/post/${
+                  posts.blog_post[0].id
+                }-${posts.blog_post[0].post_title.trim().split(' ').join('-')}`}
+              >
                 <a>
                   <Toast.Body>
                     <div className='newsToastBody'>

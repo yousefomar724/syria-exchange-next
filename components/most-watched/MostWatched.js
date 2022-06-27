@@ -23,13 +23,10 @@ const MostWatched = ({ title, border, color, sectionClass, posts }) => {
           {posts.slice(0, 4).map((item) => (
             <Toast className='grid-col-span-5' key={item.id}>
               <Link
-                href={`/post/${item.id}`}
-                // state: {
-                //   title: item.post_title,
-                //   body: item.post_body,
-                //   image: item.post_image,
-                //   category: item.post_category,
-                // },
+                href={`/post/${item.id}-${item.post_title
+                  .trim()
+                  .split(' ')
+                  .join('-')}`}
               >
                 <Toast.Body>
                   <div className='newsToastBody'>

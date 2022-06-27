@@ -1,23 +1,22 @@
 import { useTranslation } from 'react-i18next'
-
-// import '../styles/custom-page.css'
-import backgroundImage from '../assets/privacy-policy.jpg'
-import SEO from '../components/SEO'
 import Header111 from '../components/Header111'
 import ScrollToTop from '../components/ScrollToTop'
 import Footer from '../components/footer/Footer'
+import Head from 'next/head'
 
 const PrivacyPolicyPage = () => {
   const { t } = useTranslation()
 
   return (
     <>
-      <SEO />
+      <Head>
+        <title>سوريا للصرافة | {t('description.PrivacyPolicy.title')}</title>
+      </Head>
       <Header111 />
       <ScrollToTop />
       <div className='mainPage custom-page'>
         <div className='grid-col-span-12 position-relative backgroundImage'>
-          <img src={backgroundImage} alt='' />
+          <img src='/privacy-policy.jpg' alt='' />
           <h1 className='title'>{t('description.PrivacyPolicy.title')}</h1>
         </div>
 

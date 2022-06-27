@@ -3,7 +3,7 @@ const Paragraph = ({ pText }) => {
     <>
       <p>{pText}</p>
     </>
-  );
-};
+  )
+}
 
-export default Paragraph;
+export default Paragraph

@@ -1,14 +1,11 @@
 import ListItem2 from './ListItem2'
 import { RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri'
-/* import sysUpdate from "../assets/system-update.png"; */
-/* import Paragraph from "./Paragraph"; */
-/* import HeaderRefreshIcon from "./HeaderRefreshIcon"; */
-import { Dropdown, Button } from 'react-bootstrap'
+import { Dropdown } from 'react-bootstrap'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import ListItemSocial from './ListItemSocial'
 import { useTranslation } from 'react-i18next'
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
 import { useRouter } from 'next/router'
 import Skeleton from 'react-loading-skeleton'
 
@@ -86,13 +83,6 @@ const Header = () => {
     getCityCoins()
   }, [i18n])
 
-  // if (interCoins === undefined) {
-  //   return null;
-  // }
-  // if (cityCoins === undefined) {
-  //   return null;
-  // }
-
   const city_curr = cityCoins?.city_coins?.map((item) => {
     for (let [key, value] of Object.entries(item)) {
       return [key, value]
@@ -106,11 +96,10 @@ const Header = () => {
     }
     return curr1
   })
-  /*  const refreshPage = (e) => {
-    window.router.reload(false);
-  }; */
+
   let textAlign = i18n.dir() === 'ltr' ? 'text-left' : ''
   let textAlignName = i18n.dir() === 'ltr' ? 'headerCurrName ' : ''
+
   return (
     <header id='header'>
       <div className='container d-flex header'>
@@ -134,7 +123,6 @@ const Header = () => {
                       {t('description.headerHome')}
                     </a>
                   </Link>
-                  {/* <ListItem anchotText={t("description.headerHome")} link="/" /> */}
                   <Link href='/syrian-pound'>
                     <a
                       onClick={() => setShowNav(false)}
@@ -147,14 +135,6 @@ const Header = () => {
                       {t('description.headerSYP')}
                     </a>
                   </Link>
-                  {/* <ListItem
-                    anchotText={t("description.headerSYP")}
-                    link="/syrian-bound"
-                  /> */}
-                  {/* <ListItem
-                    anchotText={t("description.headerGold")}
-                    link="/gold"
-                  /> */}
                   <Link href='/gold'>
                     <a
                       onClick={() => setShowNav(false)}
@@ -165,10 +145,6 @@ const Header = () => {
                       {t('description.headerGold')}
                     </a>
                   </Link>
-                  {/* <ListItem
-                    anchotText={t("description.headerTRY")}
-                    link="/turkish-pound"
-                  /> */}
                   <Link href='/turkish-pound'>
                     <a
                       className={
@@ -181,13 +157,7 @@ const Header = () => {
                       {t('description.headerTRY')}
                     </a>
                   </Link>
-                  <li
-                  /* className={
-                      i18n.dir() === "ltr"
-                        ? "paddingLeftNews"
-                        : " paddingRightNews"
-                    } */
-                  >
+                  <li>
                     <Dropdown className='coins-dropdown'>
                       <Dropdown.Toggle
                         id='dropdown-basic'
@@ -203,54 +173,41 @@ const Header = () => {
                           <p>loading...</p>
                         ) : (
                           curr1.map((item, index) => (
-                            // <
-                            // to={`/international-coin/${curr1[index][0]}`}
-                            // to={{
-                            //   pathname: `/international-coin/${index}`,
-                            //   state: {
-                            //     item: curr1[index],
-                            //     arName:
-                            //       curr1[index][0] === iter_curr_array[index][1]
-                            //         ? i18n.dir() === "ltr"
-                            //           ? iter_curr_array[index][2]
-                            //           : iter_curr_array[index][3]
-                            //         : "",
-                            //     lastUpdated: interCoins?.last_update
-                            //   },
-                            // }}
-                            // onClick={() => setShowNav(false)}
-                            // key={index}
-                            // >
                             <Dropdown.Item
                               onClick={() => setShowNav(false)}
                               key={index}
-                              to={`/international-coin/${curr1[index][0]}`}
-                              className={`${textAlign}`}
+                              href={`/international-coin/${curr1[index][0]}`}
                               as={Link}
+                              className={`${textAlign}`}
                             >
-                              <img
-                                src={`/currIcons/${curr1[index][0]}.png`}
-                                className={`p-l-05 headerCurrIcon ${textAlign}`}
-                                alt={curr1[index][0]}
-                              />
-                              <span className={textAlignName}>
-                                {curr1[index][0] === iter_curr_array[index][1]
-                                  ? i18n.dir() === 'ltr'
-                                    ? iter_curr_array[index][2]
-                                    : iter_curr_array[index][3]
-                                  : ''}
-                              </span>
+                              <a
+                                style={{
+                                  color: 'black',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  marginBottom: '.4rem',
+                                  fontSize: '.8rem',
+                                }}
+                              >
+                                <img
+                                  src={`/currIcons/${curr1[index][0]}.png`}
+                                  className={`p-l-05 headerCurrIcon ${textAlign}`}
+                                  alt={curr1[index][0]}
+                                />
+                                <span className={textAlignName}>
+                                  {curr1[index][0] === iter_curr_array[index][1]
+                                    ? i18n.dir() === 'ltr'
+                                      ? iter_curr_array[index][2]
+                                      : iter_curr_array[index][3]
+                                    : ''}
+                                </span>
+                              </a>
                             </Dropdown.Item>
-                            // </>
                           ))
                         )}
                       </Dropdown.Menu>
                     </Dropdown>
                   </li>
-                  {/* <ListItem
-                    anchotText={t("description.headerNews")}
-                    link="/news"
-                  /> */}
                   <Link href='/news'>
                     <a
                       onClick={() => setShowNav(false)}
@@ -291,7 +248,6 @@ const Header = () => {
                     icon={
                       <img
                         src='/social-icons/messenger.png'
-                        // style={{ width: "24px" }}
                         alt='messenger.png'
                       />
                     }
@@ -303,7 +259,6 @@ const Header = () => {
                     icon={
                       <img
                         src='/social-icons/telegram.png'
-                        // style={{ width: "24px" }}
                         alt='telegram.png'
                       />
                     }
@@ -315,7 +270,6 @@ const Header = () => {
                     icon={
                       <img
                         src='/social-icons/facebook.png'
-                        // style={{ width: "24px" }}
                         alt='facebook.png'
                       />
                     }
@@ -327,7 +281,6 @@ const Header = () => {
                     icon={
                       <img
                         src='/social-icons/instagram.png'
-                        // style={{ width: "24px" }}
                         alt='instagram.png'
                       />
                     }
@@ -374,21 +327,6 @@ const Header = () => {
           {city_curr ? (
             <nav className='nav-menu2 '>
               <ul className='justify-content-center'>
-                {/*  <Button
-                className={
-                  i18n.dir() === "ltr"
-                    ? " refreshPaddingEN btn-refresh"
-                    : " refreshPaddingAR btn-refresh"
-                }
-                onClick={refreshPage}
-              >
-                <HeaderRefreshIcon
-                  anchotText={t("description.headerReload")}
-                  icon={<img src={sysUpdate} alt="sysUpdateIcon" />}
-                  iconStatus={true}
-                  liClass="refresh"
-                />
-              </Button> */}
                 {city_curr[0][1].slice(0, 7).map((item) => (
                   <ListItem2
                     Lihover={

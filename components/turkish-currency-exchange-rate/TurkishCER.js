@@ -1,33 +1,14 @@
-import { Button } from 'react-bootstrap'
 import { useEffect, useState } from 'react'
-/* import { format } from "date-fns"; */
-/* import { ar, enUS } from "date-fns/locale"; */
 import Toast from 'react-bootstrap/Toast'
 import { RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri'
-/* import RefreshIcon from "../RefreshIcon"; */
 import { useTranslation } from 'react-i18next'
-/* import sysUpdate from "../../assets/system-update.png"; */
 import CurrencyRowSkeleton from '../skeletons/CurrencyRowSkeleton'
 import formatDate from '../../lib/formatDate'
-import turkingFlagImg from '../currIcons/TRY.png'
 import Skeleton from 'react-loading-skeleton'
 
 const TurkishCER = ({ title, border, color }) => {
   const { t, i18n } = useTranslation()
   const [seeMore, setSeeMore] = useState(false)
-  /*  const [date, setDate] = useState(
-    format(new Date(), "eeee dd/MM/yyyy - hh:mm ", {
-      locale: i18n.dir() === "ltr" ? enUS : ar,
-    })
-  ); */
-  /*  const refreshDate = (e) => {
-    e.preventDefault();
-    setDate(
-      format(new Date(), "eeee dd/MM/yyyy - hh:mm ", {
-        locale: i18n.dir() === "ltr" ? enUS : ar,
-      })
-    );
-  }; */
 
   const [tryCoins, setTryCoins] = useState()
   //Currency
@@ -42,17 +23,6 @@ const TurkishCER = ({ title, border, color }) => {
     }
     getTryCoins()
   }, [])
-
-  // if (tryCoins === undefined) {
-  //   return null;
-  // }
-
-  /* const curr = tryCoins.inter_coins.map((item) => {
-    for (let [key, value] of Object.entries(item)) {
-      if ((key = "TRY")) return [key, value];
-    }
-    return curr;
-  }); */
 
   const curr = tryCoins?.inter_coins.find((item) => {
     let Try = []
@@ -76,7 +46,7 @@ const TurkishCER = ({ title, border, color }) => {
       <div className='section-branding flex-wrap'>
         <div className='heading'>
           <img
-            src={turkingFlagImg}
+            src='/currIcons/TRY.png'
             alt='Syria Exchange'
             className='logo'
             style={{ maxWidth: '32px' }}
@@ -85,10 +55,6 @@ const TurkishCER = ({ title, border, color }) => {
             {title}
           </h2>
         </div>
-
-        {/* {tryCoins?.last_update && (
-        <div className="date">{formatDate(new Date(tryCoins.last_update)) }</div>
-        )} */}
 
         <time className='date' dateTime={tryCoins?.last_update}>
           {tryCoins?.last_update ? (
@@ -132,7 +98,7 @@ const TurkishCER = ({ title, border, color }) => {
                 <Toast.Body className='toastBody'>
                   <div className=' toastFirstFragment grid-col-span-2'>
                     <img
-                      src={require(`../currIcons/${item.curr_abbreviation}.png`)}
+                      src={`/currIcons/${item.curr_abbreviation}.png`}
                       alt={item.curr_abbreviation}
                       className='toastFlag'
                     />

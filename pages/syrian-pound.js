@@ -1,23 +1,22 @@
 import { Container, Row, Col } from 'react-bootstrap'
-
 import CurrencyConverter from '../components/currency-converter/CurrencyConverter'
 import HeaderCERSyrianPoundPage from '../components/currency-exchange-rate/HeaderCERSyrianPoundPage'
 import IMGFig1 from '../components/img-fig/IMGFig1'
 import IMGFig2 from '../components/img-fig/IMGFig2'
 import InternationalCoins from '../components/international-coins/InternationalCoins'
-// import { useLocation } from 'react-router-dom'
-import SEO from '../components/SEO'
 import Header111 from '../components/Header111'
 import ScrollToTop from '../components/ScrollToTop'
 import Footer from '../components/footer/Footer'
+import Head from 'next/head'
+import { useTranslation } from 'react-i18next'
 
 const SryianBoundPage = ({ kinanDD }) => {
-  // const location = useLocation()
-  // const city = location.state
-
+  const { t } = useTranslation()
   return (
     <>
-      <SEO />
+      <Head>
+        <title>سوريا للصرافة | {t('description.headerSYP')}</title>
+      </Head>
       <Header111 />
       <ScrollToTop />
       <Container className='mt-4' as='main'>

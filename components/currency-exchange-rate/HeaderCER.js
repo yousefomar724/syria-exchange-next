@@ -1,14 +1,9 @@
 import { useEffect, useState } from 'react'
-import { Button } from 'react-bootstrap'
 import Toast from 'react-bootstrap/Toast'
 import { RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri'
-/* import RefreshIcon from "../RefreshIcon"; */
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
-/* import sysUpdate from "../../assets/system-update.png";
- */
 import Skeleton from 'react-loading-skeleton'
-
 import CurrencyRowSkeleton from '../skeletons/CurrencyRowSkeleton'
 import formatDate from '../../lib/formatDate'
 
@@ -20,14 +15,6 @@ const HeaderCER = ({ coins }) => {
     city_name: 'damascus',
     show: false,
   })
-
-  const changeValues = (textToShow, city_name) => {
-    SetDropdownTitle({
-      title: textToShow,
-      city_name: city_name,
-      show: true,
-    })
-  }
 
   const curr = coins?.city_coins.map((item) => {
     for (let [key, value] of Object.entries(item)) {

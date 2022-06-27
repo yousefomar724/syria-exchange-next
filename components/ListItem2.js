@@ -1,28 +1,24 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-const ListItem2 = ({
-  anchotText,
-  icon,
-  iconStatus,
-  usdClass,
-  cityNameClass,
-  value,
-  value2,
-  curr_difference,
-  Lihover,
-  city_curr_nameToShow,
-  city_curr_Ename,
-  divmargin,
-}) => {
+const ListItem2 = (props) => {
+  const {
+    anchotText,
+    icon,
+    iconStatus,
+    usdClass,
+    cityNameClass,
+    value,
+    value2,
+    curr_difference,
+    Lihover,
+    divmargin,
+  } = props
+
   const router = useRouter()
   const path = router.pathname
   return (
     <li className={Lihover}>
-      {/* state: {
-            city_curr_nameToShow: city_curr_nameToShow,
-            city_curr_Ename: city_curr_Ename,
-          }, */}
       <Link
         href='/syrian-pound'
         onClick={

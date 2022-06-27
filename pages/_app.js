@@ -6,10 +6,10 @@ import '../styles/App.css'
 import '../styles/page.css'
 import '../styles/header.css'
 import '../styles/news-page.css'
-// import '../fonts/AlQabas-Regular.ttf'
-// import '../fonts/29LT-Bukra.ttf'
 import '../lib/i18n'
 import SSRProvider from 'react-bootstrap/SSRProvider'
+import { DefaultSeo } from 'next-seo'
+import SEO from '../next-seo.config'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -22,6 +22,7 @@ function MyApp({ Component, pageProps }) {
       }}
     >
       <SSRProvider>
+        <DefaultSeo {...SEO} />
         <Component {...pageProps} />
       </SSRProvider>
     </SWRConfig>

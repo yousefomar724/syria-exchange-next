@@ -1,22 +1,23 @@
-import backgroundImage from '../assets/getApi.jpg'
 import { useTranslation } from 'react-i18next'
 import ListItemSocial from '../components/ListItemSocial'
-import SEO from '../components/SEO'
 import Header111 from '../components/Header111'
 import ScrollToTop from '../components/ScrollToTop'
 import Footer from '../components/footer/Footer'
+import Head from 'next/head'
 
 const GetApiPage = () => {
   const { t } = useTranslation()
   return (
     <>
-      <SEO />
+      <Head>
+        <title>سوريا للصرافة | {t('description.GetApi')}</title>
+      </Head>
       <Header111 />
       <ScrollToTop />
 
       <div className='mainPage'>
         <div className='grid-col-span-12   backgroundImage'>
-          <img src={backgroundImage} alt='' />
+          <img src='/getApi.jpg' alt='' />
         </div>
 
         <div className='grid-row-start-2 grid-col-span-12 container mt-5'>
@@ -27,7 +28,7 @@ const GetApiPage = () => {
           <p> {t('description.ApiOurServiceParagraph2')}</p>
           <p> {t('description.ApiOurServiceParagraph3')}</p>
           <h2 className='m-t-4'>{t('description.FeaturesOfOurServices')}</h2>
-          <p className='mt-2'>
+          <div className='mt-2'>
             <ul className='ads p-0'>
               <li>{t('description.FeaturesOfOurServicesParagraph1')}</li>
               <li>{t('description.FeaturesOfOurServicesParagraph2')}</li>
@@ -39,7 +40,7 @@ const GetApiPage = () => {
               <li>{t('description.FeaturesOfOurServicesParagraph8')}</li>
               <li>{t('description.FeaturesOfOurServicesParagraph9')}</li>
             </ul>
-          </p>
+          </div>
           <div className='singlePageFooter mt-5'>
             <p>{t('description.contactUs')}</p>
             <a
@@ -55,7 +56,7 @@ const GetApiPage = () => {
                 <ListItemSocial
                   icon={
                     <img
-                      src={require('../assets/social-icons/messenger.png')}
+                      src='/social-icons/messenger.png'
                       style={{ width: '90%' }}
                       alt='messenger'
                     />
@@ -67,7 +68,7 @@ const GetApiPage = () => {
                 <ListItemSocial
                   icon={
                     <img
-                      src={require('../assets/social-icons/telegram.png')}
+                      src='/social-icons/telegram.png'
                       style={{ width: '90%' }}
                       alt='telegram'
                     />
@@ -79,7 +80,7 @@ const GetApiPage = () => {
                 <ListItemSocial
                   icon={
                     <img
-                      src={require('../assets/social-icons/facebook.png')}
+                      src='/social-icons/facebook.png'
                       style={{ width: '90%' }}
                       alt='facebook'
                     />
@@ -91,7 +92,7 @@ const GetApiPage = () => {
                 <ListItemSocial
                   icon={
                     <img
-                      src={require('../assets/social-icons/instagram.png')}
+                      src='/social-icons/instagram.png'
                       style={{ width: '90%' }}
                       alt='instagram'
                     />

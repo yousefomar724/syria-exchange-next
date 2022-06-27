@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import useSWR from 'swr'
-import SEO from '../components/SEO'
 import Header111 from '../components/Header111'
 import ScrollToTop from '../components/ScrollToTop'
 import { Container, Row, Col } from 'react-bootstrap'
@@ -24,23 +23,23 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <link rel='icon' type='image/svg+xml' href='%PUBLIC_URL%/logo.svg' />
+        <link rel='icon' type='image/svg+xml' href='/logo.svg' />
         <link
           rel='icon'
           type='image/png'
           sizes='32x32'
-          href='%PUBLIC_URL%/favicon-32x32.png'
+          href='/favicon-32x32.png'
         />
         <link
           rel='icon'
           type='image/png'
           sizes='16x16'
-          href='%PUBLIC_URL%/favicon-16x16.png'
+          href='/favicon-16x16.png'
         />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='stylesheet' href='assets/bootstrap/css/bootstrap.min.css' />
-        <link rel='apple-touch-icon' href='%PUBLIC_URL%/apple-touch-icon.png' />
-        <link rel='manifest' href='%PUBLIC_URL%/manifest.json' />
+        <link rel='stylesheet' href='/assets/bootstrap/css/bootstrap.min.css' />
+        <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
+        <link rel='manifest' href='/manifest.json' />
         <meta name='msapplication-TileColor' content='#da532c' />
         <meta name='theme-color' content='#ffffff' />
 
@@ -48,48 +47,6 @@ export default function Home() {
         <meta
           name='description'
           content='سعر صرف الليرة السورية مقابل الدولار في جميع المحافظات و اسعار الذهب في سوريا سعر صرف الليرة السورية مقابل العملات  سعر صرف الليرة التركية اسعار الذهب في تركيا الليرة اليوم قيمة الليرة السورية صرف الليرة السورية سعر الدولار صرف الدولار تحويل الى سوريا'
-          data-react-helmet='true'
-        />
-        <meta property='og:type' content='website' data-react-helmet='true' />
-        <meta
-          property='og:url'
-          content='https://syria-exchange.com/'
-          data-react-helmet='true'
-        />
-        <meta
-          property='og:title'
-          content='سوريا للصرافة'
-          data-react-helmet='true'
-        />
-        <meta
-          property='og:image'
-          itemProp='image'
-          content='https://syria-exchange.com/syria-exchange-share.jpg'
-          data-react-helmet='true'
-        />
-        <meta
-          property='og:description'
-          content='سعر صرف الليرة السورية مقابل الدولار في جميع المحافظات و اسعار الذهب في سوريا سعر صرف الليرة السورية مقابل العملات  سعر صرف الليرة التركية اسعار الذهب في تركيا الليرة اليوم قيمة الليرة السورية صرف الليرة السورية سعر الدولار صرف الدولار تحويل الى سوريا'
-          data-react-helmet='true'
-        />
-        <meta
-          property='fb:app_id'
-          content='361354522788209'
-          data-react-helmet='true'
-        />
-        <meta
-          property='twitter:card'
-          content='summary_large_image'
-          data-react-helmet='true'
-        />
-        <meta
-          property='twitter:title'
-          content='سوريا للصرافة'
-          data-react-helmet='true'
-        />
-        <meta
-          property='twitter:image:src'
-          content='https://syria-exchange.com/syria-exchange-share.jpg'
           data-react-helmet='true'
         />
         <script
@@ -102,13 +59,6 @@ export default function Home() {
           async
           src='https://www.googletagmanager.com/gtag/js?id=G-XRGSDPNWJX'
         ></script>
-        {/* <script>
-          window.dataLayer = window.dataLayer || [] function gtag(){' '}
-          {typeof window !== undefined
-            ? window.dataLayer.push(arguments)
-            : null}
-          gtag('js', new Date()) gtag('config', 'G-XRGSDPNWJX')
-        </script> */}
       </Head>
       <Header111 />
       <ScrollToTop />

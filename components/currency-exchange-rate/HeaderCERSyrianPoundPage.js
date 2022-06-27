@@ -1,13 +1,9 @@
 import { DropdownButton, Dropdown } from 'react-bootstrap'
 import Skeleton from 'react-loading-skeleton'
 import { useEffect, useState } from 'react'
-/* import { format } from "date-fns";
-import { ar, enUS } from "date-fns/locale"; */
 import Toast from 'react-bootstrap/Toast'
 import { RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri'
-/* import RefreshIcon from "../RefreshIcon"; */
 import { useTranslation } from 'react-i18next'
-
 import CurrencyRowSkeleton from '../skeletons/CurrencyRowSkeleton'
 import formatDate from '../../lib/formatDate'
 
@@ -32,23 +28,7 @@ const HeaderCERSyrianPoundPage = ({ city }) => {
       city_name: city_name,
       show: true,
     })
-    // localStorage.setItem('title', textToShow)
-    // localStorage.setItem('city_name', city_name)
   }
-
-  /* const [date, setDate] = useState(
-    format(new Date(), "eeee dd/MM/yyyy - hh:mm ", {
-      locale: i18n.dir() === "ltr" ? enUS : ar,
-    })
-  );
-  const refreshDate = (e) => {
-    e.preventDefault();
-    setDate(
-      format(new Date(), "eeee dd/MM/yyyy - hh:mm ", {
-        locale: i18n.dir() === "ltr" ? enUS : ar,
-      })
-    );
-  }; */
   const [cityCoins, setCityCoins] = useState()
 
   useEffect(() => {
@@ -63,10 +43,6 @@ const HeaderCERSyrianPoundPage = ({ city }) => {
     getCityCoins()
   }, [])
 
-  // if (cityCoins === undefined) {
-  //   return null;
-  // }
-
   const curr = cityCoins?.city_coins.map((item) => {
     for (let [key, value] of Object.entries(item)) {
       return [key, value]
@@ -76,9 +52,6 @@ const HeaderCERSyrianPoundPage = ({ city }) => {
   let localCityName = dropdownTitle.city_name
     ? dropdownTitle.city_name
     : 'Domascus'
-  // localStorage.getItem('city_name') === undefined
-  //   ? dropdownTitle.city_name
-  //   : localStorage.getItem('city_name')
 
   let curr1 = curr?.filter((item) => item[0] === localCityName)
   const ToastRadius = i18n.dir() === 'ltr' ? 'toastRadiusEN' : 'toastRadiusAr'
@@ -97,12 +70,7 @@ const HeaderCERSyrianPoundPage = ({ city }) => {
         <DropdownButton
           id='dropdown-basic-button'
           className='align-self-end'
-          title={
-            dropdownTitle.title
-            // localStorage.getItem('title') === undefined
-            //   ? dropdownTitle.title
-            //   : localStorage.getItem('title')
-          }
+          title={dropdownTitle.title}
         >
           {curr?.[0][1].map((city) => (
             <Dropdown.Item key={city.id} as='button'>
@@ -150,7 +118,7 @@ const HeaderCERSyrianPoundPage = ({ city }) => {
                 <Toast.Body className='toastBody'>
                   <div className=' toastFirstFragment grid-col-span-2'>
                     <img
-                      src={require(`../currIcons/${city.curr_abbreviation}.png`)}
+                      src={`/currIcons/${city.curr_abbreviation}.png`}
                       alt={city.curr_abbreviation}
                       className='toastFlag'
                     />

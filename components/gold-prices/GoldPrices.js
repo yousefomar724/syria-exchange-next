@@ -1,15 +1,8 @@
-import { Button } from 'react-bootstrap'
-import { useEffect, useState } from 'react'
-/* import { format } from "date-fns";
-import { ar, enUS } from "date-fns/locale"; */
 import Toast from 'react-bootstrap/Toast'
 import { RiArrowUpSLine, RiArrowDownSLine } from 'react-icons/ri'
-/* import RefreshIcon from "../RefreshIcon"; */
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
-/* import sysUpdate from "../../assets/system-update.png"; */
 import Skeleton from 'react-loading-skeleton'
-
 import CurrencyRowSkeleton from '../skeletons/CurrencyRowSkeleton'
 import formatDate from '../../lib/formatDate'
 
