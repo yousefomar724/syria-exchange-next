@@ -10,8 +10,13 @@ import '../lib/i18n'
 import SSRProvider from 'react-bootstrap/SSRProvider'
 import { DefaultSeo } from 'next-seo'
 import SEO from '../next-seo.config'
+import { useTranslation } from 'react-i18next'
 
 function MyApp({ Component, pageProps }) {
+  const { i18n } = useTranslation()
+  if (process.browser) {
+    document.dir = i18n.dir()
+  }
   return (
     <SWRConfig
       value={{

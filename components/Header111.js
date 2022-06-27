@@ -178,9 +178,9 @@ const Header = () => {
                               key={index}
                               href={`/international-coin/${curr1[index][0]}`}
                               as={Link}
-                              className={`${textAlign}`}
                             >
                               <a
+                                className={`${textAlign}`}
                                 style={{
                                   color: 'black',
                                   display: 'flex',
