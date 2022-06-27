@@ -22,7 +22,36 @@ function MyApp({ Component, pageProps }) {
       }}
     >
       <SSRProvider>
-        <DefaultSeo {...SEO} />
+        <DefaultSeo
+          {...SEO}
+          additionalLinkTags={[
+            {
+              rel: 'icon',
+              type: 'image/svg+xml',
+              href: '/logo.svg',
+            },
+            {
+              rel: 'icon',
+              type: 'image/png',
+              href: '/favicon-32x32.png',
+              sizes: '32x32',
+            },
+            {
+              rel: 'icon',
+              type: 'image/png',
+              sizes: '16x16',
+              href: '/favicon-16x16.png',
+            },
+            {
+              rel: 'stylesheet',
+              href: '/assets/bootstrap/css/bootstrap.min.css',
+            },
+            {
+              rel: 'manifest',
+              href: '/manifest.json',
+            },
+          ]}
+        />
         <Component {...pageProps} />
       </SSRProvider>
     </SWRConfig>
