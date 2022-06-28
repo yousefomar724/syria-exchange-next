@@ -45,7 +45,7 @@ const Footer = () => {
             <img src='/google-play-badge.png' alt='' />
           </a>
           <a href='#' className='pl-1'>
-            <img src='/apple-store-badge.png' alt='' />
+            <img src='/direct-link.png' alt='' />
           </a>
         </div>
       </div>

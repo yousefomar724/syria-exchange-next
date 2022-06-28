@@ -233,7 +233,7 @@ const Header = () => {
                         </Dropdown.Item>
                         <Dropdown.Item href='https://play.google.com/store/apps/details?id=com.currencyapplication.currencyapplication&hl=ar&gl=US'>
                           <img
-                            src='/apple-store-badge.png'
+                            src='/direct-link.png'
                             alt='Apple App'
                             className='headerAppIcon'
                           />
