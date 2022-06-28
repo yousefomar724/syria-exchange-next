@@ -12,6 +12,7 @@ import IMGFig1 from '../components/img-fig/IMGFig1'
 import SyriaNews from '../components/syria-news/SyriaNews'
 import IMGFig2 from '../components/img-fig/IMGFig2'
 import Footer from '../components/footer/Footer'
+import Script from 'next/script'
 
 export default function Home() {
   const { data: cityCoinsData } = useSWR('/city-coins.php')
@@ -31,19 +32,17 @@ export default function Home() {
         <meta
           name='description'
           content='سعر صرف الليرة السورية مقابل الدولار في جميع المحافظات و اسعار الذهب في سوريا سعر صرف الليرة السورية مقابل العملات  سعر صرف الليرة التركية اسعار الذهب في تركيا الليرة اليوم قيمة الليرة السورية صرف الليرة السورية سعر الدولار صرف الدولار تحويل الى سوريا'
-          data-react-helmet='true'
         />
-        <script
-          async
-          src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7449694416039010'
-          crossOrigin='anonymous'
-        ></script>
-
-        <script
-          async
-          src='https://www.googletagmanager.com/gtag/js?id=G-XRGSDPNWJX'
-        ></script>
       </Head>
+      <Script
+        async
+        src='https://www.googletagmanager.com/gtag/js?id=G-XRGSDPNWJX'
+      />
+      <Script
+        async
+        src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7449694416039010'
+        crossOrigin='anonymous'
+      />
       <Header111 />
       <ScrollToTop />
       <main>

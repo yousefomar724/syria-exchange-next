@@ -73,7 +73,7 @@ const NewsItems = () => {
                 <Card.Img variant='top' src={item.post_image} />
                 <Card.Body>
                   <Card.Title as='h3'>{item.post_title}</Card.Title>
-                  <Card.Text>
+                  <Card.Text as='div'>
                     {renderMarkup(`${item.post_body.substring(0, 150)}...`)}
                   </Card.Text>
                   <Link

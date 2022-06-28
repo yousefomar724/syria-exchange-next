@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import InternationalCoinSkeleton from '../skeletons/InternationalCoinSkeleton'
 import formatDate from '../../lib/formatDate'
 
-const InternationalCoins = ({ sectionClass, border, color }) => {
+const InternationalCoins = ({ sectionClass }) => {
   const { t, i18n } = useTranslation()
 
   const { data } = useSWR('/international-coins.php')
@@ -32,7 +32,7 @@ const InternationalCoins = ({ sectionClass, border, color }) => {
   const sarTry = Try?.[0][1].filter((item) => item.curr_abbreviation === 'SAR')
 
   return (
-    <section className={sectionClass}>
+    <section className={`${sectionClass}`}>
       <div
         className='section-branding justify-content-center'
         style={{ padding: '10px' }}
@@ -43,8 +43,7 @@ const InternationalCoins = ({ sectionClass, border, color }) => {
             style={{
               fontSize: '18px',
               padding: '3px 0',
-              lineHeight: 1,
-              ...(color && { color: color }),
+              lineHeight: '1',
             }}
           >
             {t('description.internationalCoinsTitle')}
@@ -54,7 +53,7 @@ const InternationalCoins = ({ sectionClass, border, color }) => {
       <div className='InternationalCoinsToastDiv'>
         <div
           className='InternationalCoinsToastFirstRow font-number'
-          style={{ backgroundColor: border, color: color, padding: '1px 0' }}
+          style={{ padding: '1px 0' }}
         >
           {data?.last_update ? (
             formatDate(new Date(data.last_update))

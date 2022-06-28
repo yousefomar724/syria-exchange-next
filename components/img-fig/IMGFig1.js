@@ -9,7 +9,7 @@ const IMGFig1 = ({ sectionClass }) => {
   }
 
   return (
-    <section className={sectionClass}>
+    <section className={`${sectionClass}`}>
       <div className='figureIMG1 d-flex justify-content-center'>
         <a
           href={ads.ads_banner[2].banner_link}

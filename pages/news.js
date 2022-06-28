@@ -18,7 +18,6 @@ const NewsPage = () => {
   const financialPosts = posts?.blog_post.filter(
     (item) => item.post_category === 'نصائح مالية'
   )
-
   return (
     <>
       <Head>
@@ -36,7 +35,7 @@ const NewsPage = () => {
             <MostWatched
               title={t('description.financialAdvices')}
               posts={financialPosts}
-              sectionClass='MostWatched'
+              sectionClass='mostWatched'
             />
             <InternationalCoins sectionClass='mt-6 InternationalCoins' />
             <IMGFig1 sectionClass='m-t-10 figureIMG' />

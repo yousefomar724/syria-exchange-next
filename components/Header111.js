@@ -174,12 +174,12 @@ const Header = () => {
                         ) : (
                           curr1.map((item, index) => (
                             <Dropdown.Item
-                              onClick={() => setShowNav(false)}
                               key={index}
                               href={`/international-coin/${curr1[index][0]}`}
                               as={Link}
                             >
                               <a
+                                onClick={() => setShowNav(false)}
                                 className={`${textAlign}`}
                                 style={{
                                   color: 'black',
@@ -194,7 +194,7 @@ const Header = () => {
                                   className={`p-l-05 headerCurrIcon ${textAlign}`}
                                   alt={curr1[index][0]}
                                 />
-                                <span className={textAlignName}>
+                                <span className={`${textAlign}`}>
                                   {curr1[index][0] === iter_curr_array[index][1]
                                     ? i18n.dir() === 'ltr'
                                       ? iter_curr_array[index][2]

@@ -29,6 +29,12 @@ function MyApp({ Component, pageProps }) {
       <SSRProvider>
         <DefaultSeo
           {...SEO}
+          additionalMetaTags={[
+            {
+              name: 'facebook-domain-verification',
+              content: 'iytkd3zpbcf8sc22whobbk2tze4v6v',
+            },
+          ]}
           additionalLinkTags={[
             {
               rel: 'icon',

@@ -64,22 +64,16 @@ const SinglePostPage = ({ post, financialPosts }) => {
   return (
     <>
       <NextSeo
-        title={
-          post.post_title.trim()
-            ? `${post.post_title.trim()} | ${baseTitle}`
-            : baseTitle
-        }
+        title={post ? `${post.post_title.trim()} | ${baseTitle}` : baseTitle}
         description={`${post.post_body.substring(3, 120)}...`}
         openGraph={{
           url: typeof window !== 'undefined' ? window.location.href : '/',
-          title: post.post_title.trim()
-            ? `${post.post_title.trim()} | ${baseTitle}`
-            : baseTitle,
+          title: post ? `${post.post_title.trim()} | ${baseTitle}` : baseTitle,
           description: `${post.post_body.substring(3, 120)}...`,
           type: 'article',
           images: [
             {
-              url: post.post_image
+              url: post
                 ? post.post_image
                 : `${
                     typeof window !== 'undefined' ? window.location.href : '/'
@@ -91,9 +85,6 @@ const SinglePostPage = ({ post, financialPosts }) => {
             },
           ],
           site_name: 'https://syria-exchange-next.vercel.app/',
-        }}
-        facebook={{
-          appId: '361354522788209',
         }}
         twitter={{
           cardType: 'summary_large_image',
