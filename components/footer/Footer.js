@@ -44,7 +44,10 @@ const Footer = () => {
           <a href='https://play.google.com/store/apps/details?id=com.currencyapplication.currencyapplication&hl=ar&gl=US'>
             <img src='/google-play-badge.png' alt='' />
           </a>
-          <a href='#' className='pl-1'>
+          <a
+            href='https://a.top4top.io/f_HPqxFPF1XKNzxwPC6I2wog/1656591567/2314zwpww1.apk'
+            className='pl-1'
+          >
             <img src='/direct-link.png' alt='' />
           </a>
         </div>

@@ -231,7 +231,7 @@ const Header = () => {
                             className='headerAppIcon'
                           />
                         </Dropdown.Item>
-                        <Dropdown.Item href='https://play.google.com/store/apps/details?id=com.currencyapplication.currencyapplication&hl=ar&gl=US'>
+                        <Dropdown.Item href='https://a.top4top.io/f_HPqxFPF1XKNzxwPC6I2wog/1656591567/2314zwpww1.apk'>
                           <img
                             src='/direct-link.png'
                             alt='Apple App'
