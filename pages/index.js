@@ -33,16 +33,12 @@ export default function Home() {
           name='description'
           content='سعر صرف الليرة السورية مقابل الدولار في جميع المحافظات و اسعار الذهب في سوريا سعر صرف الليرة السورية مقابل العملات  سعر صرف الليرة التركية اسعار الذهب في تركيا الليرة اليوم قيمة الليرة السورية صرف الليرة السورية سعر الدولار صرف الدولار تحويل الى سوريا'
         />
+        <script
+          async
+          src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4833236828935969'
+          crossOrigin='anonymous'
+        ></script>
       </Head>
-      <Script
-        async
-        src='https://www.googletagmanager.com/gtag/js?id=G-XRGSDPNWJX'
-      />
-      <Script
-        async
-        src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7449694416039010'
-        crossOrigin='anonymous'
-      />
       <Header111 />
       <ScrollToTop />
       <main>

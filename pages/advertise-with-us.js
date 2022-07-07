@@ -12,6 +12,11 @@ const AdvertiseWithUsPage = ({ history }) => {
     <>
       <Head>
         <title>سوريا للصرافة | {t('description.AdvertiseWithUs')}</title>
+        <script
+          async
+          src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4833236828935969'
+          crossOrigin='anonymous'
+        ></script>
       </Head>
       <Header111 />
       <ScrollToTop />

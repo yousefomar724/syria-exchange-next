@@ -17,6 +17,7 @@ import {
 import { Markup, renderMarkup } from 'react-render-markup'
 import Skeleton from 'react-loading-skeleton'
 import Header111 from '../../components/Header111'
+import Head from 'next/head'
 
 export const getStaticProps = async (context) => {
   const { id } = context.params
@@ -90,6 +91,13 @@ const SinglePostPage = ({ post, financialPosts }) => {
           cardType: 'summary_large_image',
         }}
       />
+      <Head>
+        <script
+          async
+          src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4833236828935969'
+          crossOrigin='anonymous'
+        ></script>
+      </Head>
 
       <Header111 />
       <ScrollToTop />

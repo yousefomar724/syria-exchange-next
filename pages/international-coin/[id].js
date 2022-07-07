@@ -10,6 +10,7 @@ import InterGoldPrices from '../../components/turkish-gold-prices/InterGoldPrice
 import Footer from '../../components/footer/Footer'
 import Header111 from '../../components/Header111'
 import ScrollToTop from '../../components/ScrollToTop'
+import Head from 'next/head'
 
 const CURRENCY_ABBRE_TO_NAME = {
   USD: ['USA Dollar', 'دولار امريكي'],
@@ -108,6 +109,13 @@ const InternationalCoinPage = ({ coins, internationalCoinsData }) => {
   return (
     <>
       <NextSeo title={title} />
+      <Head>
+        <script
+          async
+          src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4833236828935969'
+          crossOrigin='anonymous'
+        ></script>
+      </Head>
       <Header111 />
       <ScrollToTop />
       <Container className='mt-4' as='main'>
