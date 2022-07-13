@@ -46,7 +46,13 @@ export const getStaticPaths = async () => {
   const allPosts = await data.json()
 
   const paths = allPosts?.blog_post.map((post) => ({
-    params: { id: `${post.id}-${post.post_title.trim().split(' ').join('-')}` },
+    params: {
+      id: `${post.id}-${post.post_title
+        .trim()
+        .slice(0, 20)
+        .split(' ')
+        .join('-')}`,
+    },
   }))
 
   return { paths, fallback: false }

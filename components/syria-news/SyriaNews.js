@@ -33,7 +33,11 @@ const SyriaNews = ({ posts }) => {
           <Link
             href={`/post/${
               posts.blog_post[0].id
-            }-${posts.blog_post[0].post_title.trim().split(' ').join('-')}`}
+            }-${posts.blog_post[0].post_title
+              .trim()
+              .slice(0, 20)
+              .split(' ')
+              .join('-')}`}
           >
             <a>
               <h3
@@ -62,7 +66,11 @@ const SyriaNews = ({ posts }) => {
               <Link
                 href={`/post/${
                   posts.blog_post[0].id
-                }-${posts.blog_post[0].post_title.trim().split(' ').join('-')}`}
+                }-${posts.blog_post[0].post_title
+                  .trim()
+                  .slice(0, 20)
+                  .split(' ')
+                  .join('-')}`}
               >
                 <a>
                   <Toast.Body>

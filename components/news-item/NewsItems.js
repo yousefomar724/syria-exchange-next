@@ -79,6 +79,7 @@ const NewsItems = () => {
                   <Link
                     href={`/post/${item.id}-${item.post_title
                       .trim()
+                      .slice(0, 20)
                       .split(' ')
                       .join('-')}`}
                   >
