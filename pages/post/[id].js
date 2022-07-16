@@ -36,6 +36,7 @@ export const getStaticProps = async (context) => {
       post,
       financialPosts,
     },
+    revalidate: 1,
   }
 }
 
@@ -64,7 +65,7 @@ const SinglePostPage = ({ post, financialPosts }) => {
     i18n: { language },
   } = useTranslation()
 
-  const currentURL = `https://syria-exchange-next.vercel.app${router.asPath}`
+  const currentURL = `http://sy-coins${router.asPath}`
 
   const baseTitle = language === 'ar' ? 'سوريا للصرافة' : 'Syria Exchange'
 
@@ -91,7 +92,7 @@ const SinglePostPage = ({ post, financialPosts }) => {
               type: 'image/jpg',
             },
           ],
-          site_name: 'https://syria-exchange-next.vercel.app/',
+          site_name: 'http://sy-coins.com',
         }}
         twitter={{
           cardType: 'summary_large_image',

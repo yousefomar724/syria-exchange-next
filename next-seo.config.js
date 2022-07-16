@@ -2,8 +2,8 @@ export default {
   openGraph: {
     type: 'website',
     locale: 'ar_AR',
-    url: 'https://syria-exchange.com',
-    site_name: 'syria-exchange.com',
+    url: 'http://sy-coins.com',
+    site_name: 'sy-coins.com',
     images: [
       {
         url: 'https://syria-exchange.com/syria-exchange-share.jpg',
@@ -15,7 +15,7 @@ export default {
     ],
   },
   twitter: {
-    site: '@syria-exchange.com',
+    site: '@sy-coins.com',
     cardType: 'summary_large_image',
   },
 }
