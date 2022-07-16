@@ -65,7 +65,7 @@ const SinglePostPage = ({ post, financialPosts }) => {
     i18n: { language },
   } = useTranslation()
 
-  const currentURL = `http://sy-coins${router.asPath}`
+  const currentURL = `https://syria-exchange.com${router.asPath}`
 
   const baseTitle = language === 'ar' ? 'سوريا للصرافة' : 'Syria Exchange'
 
@@ -92,7 +92,7 @@ const SinglePostPage = ({ post, financialPosts }) => {
               type: 'image/jpg',
             },
           ],
-          site_name: 'http://sy-coins.com',
+          site_name: 'syria-exchange.com',
         }}
         twitter={{
           cardType: 'summary_large_image',

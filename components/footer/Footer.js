@@ -45,7 +45,7 @@ const Footer = () => {
             <img src='/google-play-badge.png' alt='' />
           </a>
           <a
-            href='https://a.top4top.io/f_HPqxFPF1XKNzxwPC6I2wog/1656591567/2314zwpww1.apk'
+            href='https://f.top4top.io/f_7mHee9-lFUCfMYLOYYSXyw/1658094673/2387zwh2e1.apk'
             className='pl-1'
           >
             <img src='/direct-link.png' alt='' />
