@@ -10,14 +10,24 @@ import ScrollToTop from '../components/ScrollToTop'
 import Footer from '../components/footer/Footer'
 import Head from 'next/head'
 
-const NewsPage = () => {
-  const { data: posts } = useSWR('/blog-post.php')
-
-  const { t } = useTranslation()
-
+export const getStaticProps = async () => {
+  const data = await fetch(
+    'https://syria-exchange.com/panel/v1/api/blog-post.php'
+  )
+  const posts = await data.json()
   const financialPosts = posts?.blog_post.filter(
     (item) => item.post_category === 'نصائح مالية'
   )
+  return {
+    props: {
+      financialPosts,
+    },
+    revalidate: 1,
+  }
+}
+
+const NewsPage = ({ financialPosts }) => {
+  const { t } = useTranslation()
   return (
     <>
       <Head>

@@ -12,15 +12,60 @@ import IMGFig1 from '../components/img-fig/IMGFig1'
 import SyriaNews from '../components/syria-news/SyriaNews'
 import IMGFig2 from '../components/img-fig/IMGFig2'
 import Footer from '../components/footer/Footer'
-import Script from 'next/script'
 
-export default function Home() {
-  const { data: cityCoinsData } = useSWR('/city-coins.php')
-  const { data: internationalCoinsData } = useSWR('/international-coins.php')
-  const { data: centralBankData } = useSWR('/central-bank.php')
-  const { data: internationalGoldData } = useSWR('/international-gold.php')
-  const { data: posts } = useSWR('/blog-post.php')
-  const { data: adsBanners } = useSWR('/ads-banner.php')
+export const getStaticProps = async () => {
+  const [
+    cityCoinsDataRes,
+    internationalCoinsDataRes,
+    centralBankDataRes,
+    internationalGoldDataRes,
+    postsRes,
+    adsBannersRes,
+  ] = await Promise.all([
+    fetch(`https://syria-exchange.com/panel/v1/api/city-coins.php`),
+    fetch(`https://syria-exchange.com/panel/v1/api/international-coins.php`),
+    fetch(`https://syria-exchange.com/panel/v1/api/central-bank.php`),
+    fetch(`https://syria-exchange.com/panel/v1/api/international-gold.php`),
+    fetch(`https://syria-exchange.com/panel/v1/api/blog-post.php`),
+    fetch(`https://syria-exchange.com/panel/v1/api/ads-banner.php`),
+  ])
+  const [
+    cityCoinsData,
+    internationalCoinsData,
+    centralBankData,
+    internationalGoldData,
+    posts,
+    adsBanners,
+  ] = await Promise.all([
+    cityCoinsDataRes.json(),
+    internationalCoinsDataRes.json(),
+    centralBankDataRes.json(),
+    internationalGoldDataRes.json(),
+    postsRes.json(),
+    adsBannersRes.json(),
+  ])
+  return {
+    props: {
+      cityCoinsData,
+      internationalCoinsData,
+      centralBankData,
+      internationalGoldData,
+      posts,
+      adsBanners,
+    },
+    revalidate: 1,
+  }
+}
+
+export default function Home(props) {
+  const {
+    cityCoinsData,
+    internationalCoinsData,
+    centralBankData,
+    internationalGoldData,
+    posts,
+    adsBanners,
+  } = props
   return (
     <div>
       <Head>
