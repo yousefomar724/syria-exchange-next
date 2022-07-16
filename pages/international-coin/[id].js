@@ -81,6 +81,7 @@ export const getStaticProps = async (context) => {
       coins,
       internationalCoinsData,
     },
+    revalidate: 60,
   }
 }
 
