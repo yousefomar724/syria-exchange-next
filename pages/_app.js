@@ -34,6 +34,10 @@ function MyApp({ Component, pageProps }) {
               name: 'facebook-domain-verification',
               content: 'iytkd3zpbcf8sc22whobbk2tze4v6v',
             },
+            {
+              property: 'fb:pages',
+              content: '101489811660272',
+            },
           ]}
           additionalLinkTags={[
             {
@@ -62,9 +66,6 @@ function MyApp({ Component, pageProps }) {
               href: '/manifest.json',
             },
           ]}
-          facebook={{
-            appId: '101489811660272',
-          }}
         />
         <Component {...pageProps} />
       </SSRProvider>
