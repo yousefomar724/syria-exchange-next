@@ -62,6 +62,9 @@ function MyApp({ Component, pageProps }) {
               href: '/manifest.json',
             },
           ]}
+          facebook={{
+            appId: '101489811660272',
+          }}
         />
         <Component {...pageProps} />
       </SSRProvider>
