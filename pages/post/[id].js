@@ -14,7 +14,7 @@ import {
   WhatsappShareButton,
   TwitterShareButton,
 } from 'react-share'
-import { Markup, renderMarkup } from 'react-render-markup'
+import { renderMarkup } from 'react-render-markup'
 import Skeleton from 'react-loading-skeleton'
 import Header111 from '../../components/Header111'
 import Head from 'next/head'
@@ -61,6 +61,7 @@ export const getStaticPaths = async () => {
 
 const SinglePostPage = ({ post, financialPosts }) => {
   const router = useRouter()
+  console.log(post)
   const {
     i18n: { language },
   } = useTranslation()
