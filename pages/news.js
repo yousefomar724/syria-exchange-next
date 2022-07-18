@@ -1,4 +1,3 @@
-import useSWR from 'swr'
 import { useTranslation } from 'react-i18next'
 import { Container, Row, Col } from 'react-bootstrap'
 import IMGFig1 from '../components/img-fig/IMGFig1'
