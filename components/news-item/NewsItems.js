@@ -77,7 +77,8 @@ const NewsItems = () => {
                     {renderMarkup(`${item.post_body.substring(0, 150)}...`)}
                   </Card.Text>
                   <Link
-                    href={`/post/${item.id}-${item.post_title
+                    href='/post/[id]'
+                    as={`/post/${item.id}-${item.post_title
                       .trim()
                       .slice(0, 20)
                       .split(' ')

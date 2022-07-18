@@ -61,7 +61,6 @@ export const getStaticPaths = async () => {
 
 const SinglePostPage = ({ post, financialPosts }) => {
   const router = useRouter()
-  console.log(post)
   const {
     i18n: { language },
   } = useTranslation()
